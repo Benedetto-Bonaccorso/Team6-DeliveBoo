@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("name", 50);
             $table->string("slug");
             $table->text("description");
-            $table->decimal("price", 5,2)->nullable();
+            $table->decimal("price", 5, 2)->nullable();
             $table->boolean("visible");
             $table->string("cover_image")->nullable();
             $table->timestamps();

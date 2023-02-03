@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('dishes', function (Blueprint $table) {
-            $table->unsignedBigInteger("id_restaurant")->after("id");
+            $table->unsignedBigInteger("id_restaurant")->nullable()->after("id");
             $table->foreign("id_restaurant")->references("id")->on("restaurants")->onDelete("set null");
         });
     }
