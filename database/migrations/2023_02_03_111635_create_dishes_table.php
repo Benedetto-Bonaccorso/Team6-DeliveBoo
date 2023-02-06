@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("slug");
             $table->text("description");
             $table->decimal("price", 5, 2)->nullable();
-            $table->boolean("visible");
+            $table->boolean("visible")->default(true);
             $table->string("cover_image")->nullable();
             $table->timestamps();
         });
