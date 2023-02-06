@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Tipology;
 use App\Http\Requests\StoreTipologyRequest;
 use App\Http\Requests\UpdateTipologyRequest;
+use App\Http\Controllers\Controller;
 
 class TipologyController extends Controller
 {

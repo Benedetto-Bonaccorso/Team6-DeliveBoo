@@ -1,1 +1,25 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+@import "@fortawesome/fontawesome-free/css/all.css";
+
+.sidebar {
+
+    height: 100vh;
+
+    .nav-link {
+        color: rgb(129, 129, 129);
+
+        &:hover {
+            color: black;
+        }
+    }
+
+    .active {
+        color: black;
+    }
+}
+
+.table-responsive {
+    td {
+        padding: 0.25rem 0.5rem;
+    }
+}
