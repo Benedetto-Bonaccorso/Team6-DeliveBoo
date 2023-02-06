@@ -6,6 +6,7 @@ use App\Models\Dish;
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class DishController extends Controller
 {
@@ -37,7 +38,14 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
-        //
+        // Validate the data
+        $val_data = $request->validated();
+
+        // Check if the request has a cover_image field
+        if ($request->hasFile('cover_image')) {
+            $cover_image = Storage::put('uploads', $val_data['cover_image']);
+            $val_data['cover_image'] = $cover_image;
+        }
     }
 
     /**
