@@ -79,7 +79,20 @@ class DishController extends Controller
      */
     public function update(UpdateDishRequest $request, Dish $dish)
     {
-        //
+        // validate the data
+        $val_data = $request->validated();
+
+        // check if the request has a cover_image field
+        if ($request->hasFile('cover_image')) {
+
+            // check if the current post has an image, if yes, delete it.
+            if ($dish->cover_image) {
+                Storage::delete($dish->cover_image);
+            }
+
+            $cover_image = Storage::put('uploads', $val_data['cover_image']);
+            $val_data['cover_image'] = $cover_image;
+        }
     }
 
     /**

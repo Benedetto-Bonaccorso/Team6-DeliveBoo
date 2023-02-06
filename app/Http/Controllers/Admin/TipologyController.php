@@ -58,6 +58,21 @@ class TipologyController extends Controller
     {
         $tipology->update($request->all());
 
+        // validate the data
+        $val_data = $request->validated();
+
+        // check if the request has a cover_image field
+        if ($request->hasFile('cover_image')) {
+
+            // check if the current post has an image, if yes, delete it.
+            if ($tipology->cover_image) {
+                Storage::delete($tipology->cover_image);
+            }
+
+            $cover_image = Storage::put('uploads', $val_data['cover_image']);
+            $val_data['cover_image'] = $cover_image;
+        }
+
         // redirect
         return back()->with('message', "Tipology $tipology->slug updated successfully");
     }
