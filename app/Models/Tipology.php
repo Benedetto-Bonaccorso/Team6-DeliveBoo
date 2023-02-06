@@ -10,8 +10,9 @@ class Tipology extends Model
 {
     use HasFactory;
 
+    protected $fillable = ["name", "slug"];
 
-     /**
+    /**
      * The restaurants that belong to the tipology
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

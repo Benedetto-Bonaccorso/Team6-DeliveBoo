@@ -16,18 +16,11 @@ class TipologyController extends Controller
      */
     public function index()
     {
-        //
+        $tipologies = Tipology::all();
+
+        return view('admin.tipologies.index', compact('tipologies'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -37,30 +30,12 @@ class TipologyController extends Controller
      */
     public function store(StoreTipologyRequest $request)
     {
-        //
+        $tipology = Tipology::create($request->all());
+
+        return back()->with('message', "tipology $tipology->slug created successfully");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Tipology  $tipology
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Tipology $tipology)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Tipology  $tipology
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Tipology $tipology)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -71,7 +46,10 @@ class TipologyController extends Controller
      */
     public function update(UpdateTipologyRequest $request, Tipology $tipology)
     {
-        //
+        $tipology->update($request->all());
+
+        // redirect
+        return back()->with('message', "Tipology $tipology->slug updated successfully");
     }
 
     /**
@@ -82,6 +60,7 @@ class TipologyController extends Controller
      */
     public function destroy(Tipology $tipology)
     {
-        //
+        $tipology->delete();
+        return to_route('admin.tipologies.index')->with('message', "Tipology $tipology->slug Deleted successfully");
     }
 }
