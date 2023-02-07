@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Restaurant extends Model
 {
     use HasFactory;
-    protected $fillable = ["name", "slug", "id_user", "phone_number", "piva", "address", "cover_image"];
+    protected $fillable = ["name", "slug", "user_id", "phone_number", "piva", "address", "cover_image"];
 
     /**
      * The restaurant that belong to the Dishes
@@ -23,7 +23,7 @@ class Restaurant extends Model
         return $this->hasMany(Dish::class);
     }
 
-     /**
+    /**
      * The tipologies that belong to the restaurant
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
