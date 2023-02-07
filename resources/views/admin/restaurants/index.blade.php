@@ -152,7 +152,7 @@
 
                         <div class="mb-3">
                             <label for="phone_number" class="form-label">Phone</label>
-                            <input type="text" phone_number="phone_number" id="phone_number"
+                            <input type="text" name="phone_number" id="phone_number"
                                 class="form-control @error('phone_number') is-invalid @enderror"
                                 placeholder="learn laravel 9" aria-describedby="phone_numberHelper"
                                 value="{{ old('phone_number', $restaurants->phone_number) }}">
@@ -165,7 +165,7 @@
 
                         <div class="mb-3">
                             <label for="piva" class="form-label">Partita Iva</label>
-                            <input type="text" piva="piva" id="piva"
+                            <input type="text" name="piva" id="piva"
                                 class="form-control @error('piva') is-invalid @enderror" placeholder="learn laravel 9"
                                 aria-describedby="pivaHelper" value="{{ old('piva', $restaurants->piva) }}">
                         </div>
@@ -177,7 +177,7 @@
 
                         <div class="mb-3">
                             <label for="address" class="form-label">Address</label>
-                            <input type="text" address="address" id="address"
+                            <input type="text" name="address" id="address"
                                 class="form-control @error('address') is-invalid @enderror" placeholder="learn laravel 9"
                                 aria-describedby="addressHelper" value="{{ old('address', $restaurants->address) }}">
                         </div>
