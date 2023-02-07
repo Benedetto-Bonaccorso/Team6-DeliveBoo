@@ -6,7 +6,9 @@ use App\Models\Dish;
 use App\Http\Requests\StoreDishRequest;
 use App\Http\Requests\UpdateDishRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\support\Str;
 
 class DishController extends Controller
 {
@@ -17,7 +19,8 @@ class DishController extends Controller
      */
     public function index()
     {
-        //
+        $dishes = Dish::all();
+        return view("admin.dishes.index", compact("dishes"));
     }
 
     /**
@@ -27,7 +30,7 @@ class DishController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.dishes.create");
     }
 
     /**
@@ -38,6 +41,7 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
+
         // Validate the data
         $val_data = $request->validated();
 
@@ -46,6 +50,33 @@ class DishController extends Controller
             $cover_image = Storage::put('uploads', $val_data['cover_image']);
             $val_data['cover_image'] = $cover_image;
         }
+
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            "name" => "required|unique:dishes,name|min:5|max:50",
+            "slug" => "nullable",
+            "description" => "nullable|max:10000",
+            "price" => "required",
+            "visible" => "boolean",
+            "cover_image" => "nullable|image|max:300",
+        ]);
+
+        if($validator->fails()){
+            return response()->json([
+                "success" => false,
+                "message" => $validator->errors()
+            ]);
+        }
+
+        $newDish = new Dish();
+        $newDish->fill($data);
+        //$newDish->cover_image = Storage::disk('public')->put('dishes_img', $request->cover_image);
+        $newDish->slug = Str::slug($request["name"]);
+        $newDish->save();
+
+        return to_route("dishes.index");
+
     }
 
     /**
@@ -56,7 +87,7 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        //
+        return view("admin.dishes.show", compact("dish"));
     }
 
     /**
@@ -67,7 +98,8 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        //
+
+        return view("admin.dishes.edit", compact("dish"));
     }
 
     /**
@@ -79,6 +111,7 @@ class DishController extends Controller
      */
     public function update(UpdateDishRequest $request, Dish $dish)
     {
+
         // validate the data
         $val_data = $request->validated();
 
@@ -93,6 +126,19 @@ class DishController extends Controller
             $cover_image = Storage::put('uploads', $val_data['cover_image']);
             $val_data['cover_image'] = $cover_image;
         }
+        
+        $data = [
+            'name' => $request['name'],
+            "slug" => Str::slug($request["name"]),
+            'description' => $request["description"],
+            //'cover_image' => Storage::disk('public')->put('dishes_img', $request->cover),
+            'price' => $request['price'],
+            'visible' => $request['visible'],
+        ];
+        
+        $dish->update($data);
+
+        return to_route('dishes.index');
     }
 
     /**
@@ -103,6 +149,7 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        //
+        $dish->delete();
+        return to_route('dishes.index');
     }
 }
