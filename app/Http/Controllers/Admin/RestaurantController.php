@@ -6,6 +6,7 @@ use App\Models\Restaurant;
 use App\Http\Requests\StoreRestaurantRequest;
 use App\Http\Requests\UpdateRestaurantRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
 {
@@ -37,7 +38,14 @@ class RestaurantController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
-        //
+        // Validate the data
+        $val_data = $request->validated();
+
+        // Check if the request has a cover_image field
+        if ($request->hasFile('cover_image')) {
+            $cover_image = Storage::put('uploads', $val_data['cover_image']);
+            $val_data['cover_image'] = $cover_image;
+        }
     }
 
     /**
@@ -71,7 +79,20 @@ class RestaurantController extends Controller
      */
     public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
-        //
+        // validate the data
+        $val_data = $request->validated();
+
+        // check if the request has a cover_image field
+        if ($request->hasFile('cover_image')) {
+
+            // check if the current post has an image, if yes, delete it.
+            if ($restaurant->cover_image) {
+                Storage::delete($restaurant->cover_image);
+            }
+
+            $cover_image = Storage::put('uploads', $val_data['cover_image']);
+            $val_data['cover_image'] = $cover_image;
+        }
     }
 
     /**

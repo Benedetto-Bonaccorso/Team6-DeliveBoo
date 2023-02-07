@@ -6,6 +6,7 @@ use App\Models\Tipology;
 use App\Http\Requests\StoreTipologyRequest;
 use App\Http\Requests\UpdateTipologyRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class TipologyController extends Controller
 {
@@ -32,6 +33,15 @@ class TipologyController extends Controller
     {
         $tipology = Tipology::create($request->all());
 
+        // Validate the data
+        $val_data = $request->validated();
+
+        // Check if the request has a cover_image field
+        if ($request->hasFile('cover_image')) {
+            $cover_image = Storage::put('uploads', $val_data['cover_image']);
+            $val_data['cover_image'] = $cover_image;
+        }
+
         return back()->with('message', "tipology $tipology->slug created successfully");
     }
 
@@ -47,6 +57,21 @@ class TipologyController extends Controller
     public function update(UpdateTipologyRequest $request, Tipology $tipology)
     {
         $tipology->update($request->all());
+
+        // validate the data
+        $val_data = $request->validated();
+
+        // check if the request has a cover_image field
+        if ($request->hasFile('cover_image')) {
+
+            // check if the current post has an image, if yes, delete it.
+            if ($tipology->cover_image) {
+                Storage::delete($tipology->cover_image);
+            }
+
+            $cover_image = Storage::put('uploads', $val_data['cover_image']);
+            $val_data['cover_image'] = $cover_image;
+        }
 
         // redirect
         return back()->with('message', "Tipology $tipology->slug updated successfully");
