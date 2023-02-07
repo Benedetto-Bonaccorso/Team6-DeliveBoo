@@ -97,11 +97,98 @@
                 @include('admin.partials.navbar')
 
                 <div class="col">
-                    <h1 class="text-center">{{ $restaurants->name }}</h1>
-                    <h3 class="text-center m-3">Select the table from the left menu</h3>
+                    <div class="text-center">
+                        <h1>{{ $restaurants->name }}</h1>
+                        <img width="300" src="{{ $restaurants->cover_image }}" alt="">
+                    </div>
+
+                    <form class="m-5" action="{{ route('admin.restaurants.update', $restaurants->id) }}" method="POST">
+                        <h3>Edit your restaurant data</h3>
+                        @if ($errors->any())
+                            <div class="alert alert-danger" role="alert">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        @csrf
+                        @method('PUT')
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label">name</label>
+                            <input type="text" name="name" id="name"
+                                class="form-control @error('name') is-invalid @enderror" placeholder="learn laravel 9"
+                                aria-describedby="nameHelper" value="{{ old('name', $restaurants->name) }}">
+                        </div>
+                        @error('name')
+                            <div class="alert alert-danger" role="alert">
+                                {{ $message }}
+                            </div>
+                        @enderror
+
+                        <div class="mb-3 d-flex gap-4">
+                            <img width="140" src="{{ asset('storage/' . $restaurants->cover_image) }}" alt="">
+                            <div>
+                                <label for="cover_image" class="form-label">Replace Cover Image</label>
+                                <input type="file" name="cover_image" id="cover_image"
+                                    class="form-control  @error('cover_image') is-invalid @enderror" placeholder=""
+                                    aria-describedby="coverImageHelper">
+                            </div>
+                        </div>
+                        <!-- TODO: Add validation errors -->
+                        @error('cover_image')
+                            <div class="alert alert-danger" role="alert">
+                                {{ $message }}
+                            </div>
+                        @enderror
+
+                        <div class="mb-3">
+                            <label for="phone_number" class="form-label">Phone</label>
+                            <input type="text" phone_number="phone_number" id="phone_number"
+                                class="form-control @error('phone_number') is-invalid @enderror"
+                                placeholder="learn laravel 9" aria-describedby="phone_numberHelper"
+                                value="{{ old('phone_number', $restaurants->phone_number) }}">
+                        </div>
+                        @error('phone_number')
+                            <div class="alert alert-danger" role="alert">
+                                {{ $message }}
+                            </div>
+                        @enderror
+
+                        <div class="mb-3">
+                            <label for="piva" class="form-label">Partita Iva</label>
+                            <input type="text" piva="piva" id="piva"
+                                class="form-control @error('piva') is-invalid @enderror" placeholder="learn laravel 9"
+                                aria-describedby="pivaHelper" value="{{ old('piva', $restaurants->piva) }}">
+                        </div>
+                        @error('piva')
+                            <div class="alert alert-danger" role="alert">
+                                {{ $message }}
+                            </div>
+                        @enderror
+
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" address="address" id="address"
+                                class="form-control @error('address') is-invalid @enderror" placeholder="learn laravel 9"
+                                aria-describedby="addressHelper" value="{{ old('address', $restaurants->address) }}">
+                        </div>
+
+                        @error('address')
+                            <div class="alert alert-danger" role="alert">
+                                {{ $message }}
+                            </div>
+                        @enderror
+
+                    </form>
                 </div>
             </div>
         </div>
+
+
+
 
 
         <script src="/docs/5.2/dist/js/bootstrap.bundle.min.js"

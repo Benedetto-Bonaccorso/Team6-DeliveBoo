@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateRestaurantRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class RestaurantController extends Controller
 {
@@ -85,6 +86,9 @@ class RestaurantController extends Controller
     {
         // validate the data
         $val_data = $request->validated();
+
+        $val_data['slug'] = Str::slug($request->name);
+
 
         // check if the request has a cover_image field
         if ($request->hasFile('cover_image')) {
