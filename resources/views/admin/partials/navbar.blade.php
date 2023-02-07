@@ -2,11 +2,11 @@
     <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">
             <li class="nav-item">
-                {{-- <a class="nav-link {{ Route::currentRouteName() === 'admin.dashboard' ? 'active' : '' }}"
+                <a class="nav-link {{ Route::currentRouteName() === 'admin.dashboard' ? 'active' : '' }}"
                     aria-current="page" href="{{ route('admin.dashboard') }}">
                     <span data-feather="home" class="align-text-bottom"></span>
                     Dashboard
-                </a> --}}
+                </a>
             </li>
             <hr>
             <li class="nav-item">
@@ -15,7 +15,7 @@
                     <span data-feather="file" class="align-text-bottom"></span>
                     Projects
                 </a> --}}
-                <ul class="">
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         {{-- <a class="nav-link {{ Route::currentRouteName() === 'admin.technologies.index' ? 'active' : '' }}"
                             href="{{ route('admin.technologies.index') }}">
