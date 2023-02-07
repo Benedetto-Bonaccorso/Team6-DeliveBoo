@@ -1,9 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+
+    <a class="btn btn_orange m-4" href=" {{route('admin.dishes.create')}}">
+        <h2 class="mx-4">Aggiungi Nuovi Piatti</h2>
+    </a>
+
     <div class="container my-4">
         <div class="table-responsive">
-            <table class="table table-primary">
+            <table class="table table-orange">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>

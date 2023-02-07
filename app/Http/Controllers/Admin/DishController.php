@@ -41,16 +41,15 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
-
+/*
         // Validate the data
-        $val_data = $request->validated();
-
+        $data = $request->validated();
         // Check if the request has a cover_image field
         if ($request->hasFile('cover_image')) {
-            $cover_image = Storage::put('uploads', $val_data['cover_image']);
-            $val_data['cover_image'] = $cover_image;
+            $cover_image = Storage::put('uploads', $data['cover_image']);
+            $data['cover_image'] = $cover_image;
         }
-
+*/
         $data = $request->all();
 
         $validator = Validator::make($data, [
@@ -75,7 +74,7 @@ class DishController extends Controller
         $newDish->slug = Str::slug($request["name"]);
         $newDish->save();
 
-        return to_route("dishes.index");
+        return to_route("admin.dishes.index");
 
     }
 
@@ -113,7 +112,7 @@ class DishController extends Controller
     {
 
         // validate the data
-        $val_data = $request->validated();
+        $data = $request->validated();
 
         // check if the request has a cover_image field
         if ($request->hasFile('cover_image')) {
@@ -123,8 +122,8 @@ class DishController extends Controller
                 Storage::delete($dish->cover_image);
             }
 
-            $cover_image = Storage::put('uploads', $val_data['cover_image']);
-            $val_data['cover_image'] = $cover_image;
+            $cover_image = Storage::put('uploads', $data['cover_image']);
+            $data['cover_image'] = $cover_image;
         }
         
         $data = [
@@ -138,7 +137,7 @@ class DishController extends Controller
         
         $dish->update($data);
 
-        return to_route('dishes.index');
+        return to_route('admin.dishes.index');
     }
 
     /**

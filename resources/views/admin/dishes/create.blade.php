@@ -9,7 +9,7 @@
     </div>
 @endif
 
-<form action="{{route('dishes.store')}}" method="post" enctype="multipart/form-data">
+<form action="{{route('admin.dishes.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         
         <div class="form-group">
