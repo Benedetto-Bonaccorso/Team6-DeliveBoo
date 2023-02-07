@@ -104,6 +104,12 @@
 
                     <form class="m-5" action="{{ route('admin.restaurants.update', $restaurants->id) }}" method="POST">
                         <h3>Edit your restaurant data</h3>
+                        @if (session('message'))
+                            <div class="alert alert-success">
+                                {{ session('message') }}
+                            </div>
+                        @endif
+
                         @if ($errors->any())
                             <div class="alert alert-danger" role="alert">
                                 <ul>
@@ -129,13 +135,13 @@
                         @enderror
 
                         <div class="mb-3 d-flex gap-4">
-                            <img width="140" src="{{ asset('storage/' . $restaurants->cover_image) }}" alt="">
                             <div>
                                 <label for="cover_image" class="form-label">Replace Cover Image</label>
                                 <input type="file" name="cover_image" id="cover_image"
                                     class="form-control  @error('cover_image') is-invalid @enderror" placeholder=""
                                     aria-describedby="coverImageHelper">
                             </div>
+                            <img width="140" src="{{ asset('storage/' . $restaurants->cover_image) }}" alt="">
                         </div>
                         <!-- TODO: Add validation errors -->
                         @error('cover_image')
@@ -182,6 +188,7 @@
                             </div>
                         @enderror
 
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </form>
                 </div>
             </div>

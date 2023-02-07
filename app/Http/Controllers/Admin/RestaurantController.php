@@ -89,7 +89,6 @@ class RestaurantController extends Controller
 
         $val_data['slug'] = Str::slug($request->name);
 
-
         // check if the request has a cover_image field
         if ($request->hasFile('cover_image')) {
 
@@ -101,6 +100,15 @@ class RestaurantController extends Controller
             $cover_image = Storage::put('uploads', $val_data['cover_image']);
             $val_data['cover_image'] = $cover_image;
         }
+
+        //update
+        $restaurant->name = $val_data['name'];
+        $restaurant->phone_number = $val_data['phone_number'];
+        $restaurant->piva = $val_data['piva'];
+        $restaurant->address = $val_data['address'];
+
+
+        return to_route('admin.restaurants.index')->with('message', "Restaurant '$restaurant->name' updated successfully");
     }
 
     /**
