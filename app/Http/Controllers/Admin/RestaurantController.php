@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateRestaurantRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class RestaurantController extends Controller
 {
@@ -18,9 +19,10 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurant = Auth::user()->restaurants;
+        $restaurants = Auth::user()->restaurants;
+        // dd($restaurants->name);
 
-        return view('admin.dishes.index', compact('restaurant'));
+        return view('admin.restaurants.index', compact('restaurants'));
     }
 
     /**
@@ -85,6 +87,8 @@ class RestaurantController extends Controller
         // validate the data
         $val_data = $request->validated();
 
+        $val_data['slug'] = Str::slug($request->name);
+
         // check if the request has a cover_image field
         if ($request->hasFile('cover_image')) {
 
@@ -96,6 +100,15 @@ class RestaurantController extends Controller
             $cover_image = Storage::put('uploads', $val_data['cover_image']);
             $val_data['cover_image'] = $cover_image;
         }
+
+        //update
+        $restaurant->name = $val_data['name'];
+        $restaurant->phone_number = $val_data['phone_number'];
+        $restaurant->piva = $val_data['piva'];
+        $restaurant->address = $val_data['address'];
+
+
+        return to_route('admin.restaurants.index')->with('message', "Restaurant '$restaurant->name' updated successfully");
     }
 
     /**
