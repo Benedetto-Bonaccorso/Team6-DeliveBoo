@@ -13,7 +13,7 @@ class StoreTipologyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StoreTipologyRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|max:50',
+            'description' => 'nullable',
+            'cover_image' => 'nullable|image|max:250'
         ];
     }
 }
