@@ -18,9 +18,10 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurant = Auth::user()->restaurants;
+        $restaurants = Auth::user()->restaurants;
+        // dd($restaurants->name);
 
-        return view('admin.dishes.index', compact('restaurant'));
+        return view('admin.restaurants.index', compact('restaurants'));
     }
 
     /**
