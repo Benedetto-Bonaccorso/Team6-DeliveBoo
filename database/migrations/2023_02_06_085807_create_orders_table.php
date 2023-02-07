@@ -17,9 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string("name", 50);
             $table->string("address")->nullable();
-            $table->string("phone",14)->nullable();
+            $table->string("phone", 14)->nullable();
             $table->decimal("total_payment", 5, 2);
-            $table->date("date_of_order");
             $table->timestamps();
         });
     }
