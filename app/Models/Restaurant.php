@@ -37,7 +37,7 @@ class Restaurant extends Model
     /**
      * Get the user associated with the restaurant.
      */
-    public function users()
+    public function users(): HasOne
     {
         return $this->hasOne(User::class);
     }

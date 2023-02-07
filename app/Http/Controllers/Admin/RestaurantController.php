@@ -7,6 +7,7 @@ use App\Http\Requests\StoreRestaurantRequest;
 use App\Http\Requests\UpdateRestaurantRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
 {
@@ -17,7 +18,9 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        //
+        $restaurant = Auth::user()->restaurants;
+
+        return view('admin.dishes.index', compact('restaurant'));
     }
 
     /**
