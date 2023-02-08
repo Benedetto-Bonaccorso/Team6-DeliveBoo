@@ -31,5 +31,7 @@ Route::middleware('auth', 'verified')
         Route::resource("restaurants", RestaurantController::class);
     });
 
+    //Route::resource("dishes", DishController::class)
+
 
 require __DIR__ . '/auth.php';

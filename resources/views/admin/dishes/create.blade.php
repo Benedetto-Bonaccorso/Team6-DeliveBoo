@@ -9,12 +9,12 @@
     </div>
 @endif
 
-<form action="{{route('dishes.store')}}" method="post" enctype="multipart/form-data">
+<form action="{{route('admin.dishes.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         
         <div class="form-group">
-            <label for="cover">Cover Image</label>
-            <input type="file" class="form-control-file" name="cover" id="cover" placeholder="Add a cover image" aria-describedby="coverImgHelper">
+            <label for="cover_image">Cover Image</label>
+            <input type="file" class="form-control-file" name="cover_image" id="cover_image" placeholder="Add a cover image" aria-describedby="cover_imageHelper">
             <br>
             <label for="name">name</label>
             <input type="text" title="name" name="name" id="name" value="{{old('name')}}">

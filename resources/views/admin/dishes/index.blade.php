@@ -1,9 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+
+    <a class="btn btn_orange m-4" href=" {{route('admin.dishes.create')}}">
+        <h2 class="mx-4">Aggiungi Nuovi Piatti</h2>
+    </a>
+
     <div class="container my-4">
         <div class="table-responsive">
-            <table class="table table-primary">
+            <table class="table table-orange">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -29,7 +34,7 @@
                             <td>{{ $dish->description }}</td>
                             <td>{{ $dish->price }}</td>
                             <td>{{ $dish->visible }}</td>
-                            <td>{{ $dish->cover_image }}</td>
+                            <td><img width="200" src="{{asset('storage/' . $dish->cover_image)}}" alt=""></td>
                             <td>
                                 <a href="{{ route('admin.dishes.show', $dish->id) }}"
                                     class="btn bg-primary text-white w-100 my-2">View</a>
