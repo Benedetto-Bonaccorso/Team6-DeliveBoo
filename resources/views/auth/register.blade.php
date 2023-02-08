@@ -78,11 +78,11 @@
 
                             {{-- DATI RISTORANTI --}}
                             {{-- nome --}}
-                            <h4>Inserire dati del ristorante</h4>
+                            <h4>Enter restaurant data</h4>
 
                             <div class="mb-4 row">
                                 <label for="name_restaurant"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Restaurant name') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Name of the Restaurant ') }}</label>
                                 <div class="col-md-6">
                                     <input id="name_restaurant" type="text" class="form-control" name="name_restaurant"
                                         required autocomplete="name_restaurant">
@@ -92,7 +92,7 @@
                             {{-- telefono ristorante --}}
                             <div class="mb-4 row">
                                 <label for="phone"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Restaurant phone') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Restaurant phone number') }}</label>
                                 <div class="col-md-6">
                                     <input id="phone" type="text" class="form-control" name="phone" required
                                         autocomplete="phone">
@@ -119,6 +119,23 @@
                                 </div>
                             </div>
 
+                            {{-- Tipologie --}}
+                            <div class="mb-4 row">
+                                <label for="types"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Choose the types of your restaurant') }}</label>
+                                <div class="col-md-6">
+                                    <select class="dropdown" multiple name="types[]">
+                                        @forelse($tipologies as $tipology)
+                                            <option title="{{ $tipology->name }}" value="{{ $tipology->id }}">
+                                                {{ $tipology->name }}</option>
+                                        @empty
+
+                                            <h5>Sorry, there are no types to add right now</h5>
+                                        @endforelse
+                                    </select>
+                                </div>
+
+                            </div>
 
                             <div class="mb-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">

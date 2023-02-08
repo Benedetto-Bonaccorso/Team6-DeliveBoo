@@ -20,6 +20,7 @@ class RestaurantTipologySeeder extends Seeder
                 'id_restaurant' => rand(1, 3),
                 'id_tipology' => rand(1, 8)
             ]);
+         
         }
     }
 }
