@@ -87,6 +87,7 @@
                     @enderror
                     {{-- /Dish visibility --}}
 
+                    {{-- Form create button --}}
                     <button type="submit" class="btn btn-primary">Aggiungi piatto</button>
                 </form>
             </div>
