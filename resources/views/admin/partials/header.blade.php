@@ -1,15 +1,16 @@
 <header>
     <nav class="navbar navbar-expand-md p-1  shadow-sm">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                <div class="logo">
-                    <h3>DeliveBoo</h3>
-                </div>
-                {{-- config('app.name', 'Laravel') --}}
-            </a>
+            <div class="logo">
+                <img class="img-fluid" width="200" src="{{ asset('storage/assets/img/logo-deliveboo.png') }}"
+                    alt="">
+            </div>
+            {{-- config('app.name', 'Laravel') --}}
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
