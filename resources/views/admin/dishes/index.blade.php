@@ -34,7 +34,7 @@
                             <td>{{ $dish->description }}</td>
                             <td>{{ $dish->price }}</td>
                             <td>{{ $dish->visible }}</td>
-                            <td>{{ $dish->cover_image }}</td>
+                            <td><img width="200" src="{{asset('storage/' . $dish->cover_image)}}" alt=""></td>
                             <td>
                                 <a href="{{ route('admin.dishes.show', $dish->id) }}"
                                     class="btn bg-primary text-white w-100 my-2">View</a>

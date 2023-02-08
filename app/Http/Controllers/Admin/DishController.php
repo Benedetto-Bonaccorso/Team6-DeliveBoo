@@ -58,7 +58,7 @@ class DishController extends Controller
             "description" => "nullable|max:10000",
             "price" => "required",
             "visible" => "boolean",
-            "cover_image" => "nullable|image|max:300",
+            "cover_image" => "nullable|image",
         ]);
 
         if($validator->fails()){
@@ -66,6 +66,11 @@ class DishController extends Controller
                 "success" => false,
                 "message" => $validator->errors()
             ]);
+        }
+
+        if ($request->hasFile('cover_image')) {
+            $cover_image = Storage::put('uploads', $data['cover_image']);
+            $data['cover_image'] = $cover_image;
         }
 
         $newDish = new Dish();
@@ -126,11 +131,13 @@ class DishController extends Controller
             $data['cover_image'] = $cover_image;
         }
         
+
+
         $data = [
             'name' => $request['name'],
             "slug" => Str::slug($request["name"]),
             'description' => $request["description"],
-            //'cover_image' => Storage::disk('public')->put('dishes_img', $request->cover),
+            'cover_image' => Storage::disk('public')->put('dishes_img', $request->cover),
             'price' => $request['price'],
             'visible' => $request['visible'],
         ];
