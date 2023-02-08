@@ -101,6 +101,10 @@ class DishController extends Controller
         // validate the data
         $data = $request->validated();
 
+
+        $data['slug'] = Str::slug($request->name);
+
+
         // check if the request has a cover_image field
         if ($request->hasFile('cover_image')) {
 
@@ -115,18 +119,18 @@ class DishController extends Controller
 
 
 
-        $data = [
-            'name' => $request['name'],
-            "slug" => Str::slug($request["name"]),
-            'description' => $request["description"],
-            'cover_image' => Storage::disk('public')->put('dishes_img', $request->cover),
-            'price' => $request['price'],
-            'visible' => $request['visible'],
-        ];
+        // $data = [
+        //     'name' => $request['name'],
+        //     "slug" => Str::slug($request["name"]),
+        //     'description' => $request["description"],
+        //     'cover_image' => Storage::disk('public')->put('dishes_img', $request->cover),
+        //     'price' => $request['price'],
+        //     'visible' => $request['visible'],
+        // ];
 
         $dish->update($data);
 
-        return to_route('admin.dishes.index');
+        return to_route('admin.dishes.index')->with('message', "Dish '$dish->name' updated successfully");
     }
 
     /**

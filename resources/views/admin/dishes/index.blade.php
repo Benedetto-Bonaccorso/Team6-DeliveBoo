@@ -5,11 +5,17 @@
         <div class="row">
             @include('admin.partials.navbar')
 
-            <div class="col table-responsive d-flex flex-column align-items-center">
+            <div class="col table-responsive d-flex flex-column align-items-center mx-5">
 
                 <a class="btn btn_orange m-4" href=" {{ route('admin.dishes.create') }}">
                     <h6 class="mx-4">Aggiungi Nuovi Piatti</h6>
                 </a>
+
+                @if (session('message'))
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                @endif
 
                 <table class="table table-orange">
                     <thead>

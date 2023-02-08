@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
 
 class UpdateDishRequest extends FormRequest
 {
@@ -24,7 +26,8 @@ class UpdateDishRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:dishes,name|max:50',
+            // 'name' => 'required|unique:dishes,name|max:50', //Rule::unique('posts')->ignore($this->post->id)]
+            'name' => ['required', 'max:50', Rule::unique('dishes')->ignore($this->dish->id)],
             'description' => 'nullable',
             'price' => 'required|between:0,999.99',
             'visible' => 'boolean',

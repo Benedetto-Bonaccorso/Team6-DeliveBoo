@@ -14,6 +14,9 @@
 
                 <form class="m-5" action="{{ route('admin.restaurants.update', $restaurants->id) }}" method="POST"
                     enctype="multipart/form-data">
+                    @csrf
+                    @method('put')
+
                     <h3>Edit your restaurant data</h3>
                     @if (session('message'))
                         <div class="alert alert-success">
