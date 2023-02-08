@@ -23,6 +23,7 @@ class StoreDishRequest extends FormRequest
      */
     public function rules()
     {
+        // TODO: aggiungere i vari parametri
         return [
             //
         ];

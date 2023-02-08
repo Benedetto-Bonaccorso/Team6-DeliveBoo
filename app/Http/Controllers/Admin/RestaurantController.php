@@ -6,8 +6,10 @@ use App\Models\Restaurant;
 use App\Http\Requests\StoreRestaurantRequest;
 use App\Http\Requests\UpdateRestaurantRequest;
 use App\Http\Controllers\Controller;
+use App\Models\Tipology;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class RestaurantController extends Controller
 {
@@ -18,9 +20,12 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurant = Auth::user()->restaurants;
+        $restaurants = Auth::user()->restaurants;
+        // $tipologies = Tipology::orderByDesc('id')->get();
+        $tipologies = Tipology::all()->sortByDesc('id');
+        // dd($restaurants->name);
 
-        return view('admin.dishes.index', compact('restaurant'));
+        return view('admin.restaurants.index', compact('restaurants', 'tipologies'));
     }
 
     /**
@@ -83,7 +88,10 @@ class RestaurantController extends Controller
     public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
         // validate the data
+        // dd($request->all());
         $val_data = $request->validated();
+
+        $val_data['slug'] = Str::slug($request->name);
 
         // check if the request has a cover_image field
         if ($request->hasFile('cover_image')) {
@@ -96,6 +104,18 @@ class RestaurantController extends Controller
             $cover_image = Storage::put('uploads', $val_data['cover_image']);
             $val_data['cover_image'] = $cover_image;
         }
+
+
+        $restaurant->update($val_data);
+
+        if ($request->has('tipologies')) {
+            $restaurant->tipologies()->sync($request->tipologies);
+        } else {
+            $restaurant->tipologies()->sync([]);
+        }
+
+
+        return to_route('admin.restaurants.index')->with('message', "Restaurant '$restaurant->name' updated successfully");
     }
 
     /**
