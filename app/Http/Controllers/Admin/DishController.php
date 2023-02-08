@@ -41,15 +41,32 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
-
+/*
+        // Validate the data
         $data = $request->validated();
+        // Check if the request has a cover_image field
+        if ($request->hasFile('cover_image')) {
+            $cover_image = Storage::put('uploads', $data['cover_image']);
+            $data['cover_image'] = $cover_image;
+        }
+*/
+        $data = $request->all();
 
-        /* if ($data->fails()) {
+        $validator = Validator::make($data, [
+            "name" => "required|unique:dishes,name|min:5|max:50",
+            "slug" => "nullable",
+            "description" => "nullable|max:10000",
+            "price" => "required",
+            "visible" => "boolean",
+            "cover_image" => "nullable|image",
+        ]);
+
+        if($validator->fails()){
             return response()->json([
                 "success" => false,
-                "message" => $data->errors()
+                "message" => $validator->errors()
             ]);
-        } */
+        }
 
         if ($request->hasFile('cover_image')) {
             $cover_image = Storage::put('uploads', $data['cover_image']);
@@ -63,6 +80,7 @@ class DishController extends Controller
         $newDish->save();
 
         return to_route("admin.dishes.index");
+
     }
 
     /**
@@ -112,7 +130,7 @@ class DishController extends Controller
             $cover_image = Storage::put('uploads', $data['cover_image']);
             $data['cover_image'] = $cover_image;
         }
-
+        
 
 
         $data = [
@@ -123,7 +141,7 @@ class DishController extends Controller
             'price' => $request['price'],
             'visible' => $request['visible'],
         ];
-
+        
         $dish->update($data);
 
         return to_route('admin.dishes.index');
