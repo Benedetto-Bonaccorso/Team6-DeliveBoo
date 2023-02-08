@@ -17,10 +17,9 @@ class RestaurantTipologySeeder extends Seeder
     {
         for ($i = 1; $i < 10; $i++) {
             DB::table('restaurant_tipology')->insert([
-                'id_restaurant' => rand(1, 3),
-                'id_tipology' => rand(1, 8)
+                'restaurant_id' => rand(1, 3),
+                'tipology_id' => rand(1, 8)
             ]);
-         
         }
     }
 }

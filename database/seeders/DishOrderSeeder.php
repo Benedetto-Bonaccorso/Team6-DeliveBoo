@@ -16,18 +16,18 @@ class DishOrderSeeder extends Seeder
     public function run()
     {
         DB::table('dish_order')->insert([
-            'id_dish' => 1,
-            'id_order' => 1,
+            'dish_id' => 1,
+            'order_id' => 1,
             'quantity' => 2
         ]);
         DB::table('dish_order')->insert([
-            'id_dish' => 2,
-            'id_order' => 2,
+            'dish_id' => 2,
+            'order_id' => 2,
             'quantity' => 3
         ]);
         DB::table('dish_order')->insert([
-            'id_dish' => 4,
-            'id_order' => 3,
+            'dish_id' => 4,
+            'order_id' => 3,
             'quantity' => 1
         ]);
     }

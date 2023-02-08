@@ -31,9 +31,10 @@ $main-color-brown: #a16e2b;
 }
 
 .table-responsive {
-    tbody{
+    tbody {
         border-radius: 10px;
     }
+
     td {
         padding: 0.25rem 0.5rem;
         font-size: large;
@@ -154,8 +155,9 @@ header {
     }
 }
 
-.btn_orange{
+.btn_orange {
     background-color: $main-color-1-dark;
+}
 
 /* multiselect style */
 select {

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Dish extends Model
 {
     use HasFactory;
-    protected $fillable = ["name", "slug", "id_restaurant", "id_category", "price", "description", "visible", "cover_image"];
+    protected $fillable = ["name", "slug", "restaurant_id", "category_id", "price", "description", "visible", "cover_image"];
 
     /**
      * The restaurant that belong to the dish
@@ -22,7 +22,7 @@ class Dish extends Model
         return $this->BelongsTo(Restaurant::class);
     }
 
-     /**
+    /**
      * The category that belong to the dish
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -32,8 +32,8 @@ class Dish extends Model
         return $this->BelongsTo(Category::class);
     }
 
-    
-     /**
+
+    /**
      * The orders that belong to the dish
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

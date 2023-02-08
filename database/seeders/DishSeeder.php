@@ -28,8 +28,8 @@ class DishSeeder extends Seeder
             $newdish = new Dish();
             $newdish->name = $key;
             $newdish->slug = Str::slug($newdish->name);
-            $newdish->id_restaurant = $dish[0];
-            $newdish->id_category = $dish[1];
+            $newdish->restaurant_id = $dish[0];
+            $newdish->category_id = $dish[1];
             $newdish->description = $dish[2];
             $newdish->price = $dish[3];
             $newdish->visible = $dish[4];
