@@ -27,7 +27,7 @@ class RegisteredUserController extends Controller
 
         $tipologies = Tipology::orderBYDesc('id')->get();
 
-        return view('auth.register',compact('tipologies'));
+        return view('auth.register', compact('tipologies'));
     }
 
     /**
@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
 
-     
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
@@ -54,7 +54,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-       $restaurant= Restaurant::create([
+        $restaurant = Restaurant::create([
             'user_id' => $user->id,
             'name' => $request->name_restaurant,
             'slug' => Str::slug($request->name_restaurant),
@@ -65,20 +65,20 @@ class RegisteredUserController extends Controller
         ]);
 
         $types_ids = array();
-        foreach ($request->types as $type =>$value) {
-       
-            $types_ids[$type]= $value;
-          }
+        foreach ($request->types as $type => $value) {
+
+            $types_ids[$type] = $value;
+        }
 
         foreach ($types_ids as $type_id) {
-            
+
             DB::table('restaurant_tipology')->insert([
-                'id_restaurant' =>  $restaurant->id,
-                'id_tipology' =>$type_id
+                'restaurant_id' =>  $restaurant->id,
+                'tipology_id' => $type_id
             ]);
         }
-      
-     
+
+
 
         event(new Registered($user));
 

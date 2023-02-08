@@ -102,7 +102,8 @@
                         <img width="300" src="{{ $restaurants->cover_image }}" alt="">
                     </div>
 
-                    <form class="m-5" action="{{ route('admin.restaurants.update', $restaurants->id) }}" method="POST">
+                    <form class="m-5" action="{{ route('admin.restaurants.update', $restaurants->id) }}" method="POST"
+                        enctype="multipart/form-data">
                         <h3>Edit your restaurant data</h3>
                         @if (session('message'))
                             <div class="alert alert-success">
@@ -187,6 +188,32 @@
                                 {{ $message }}
                             </div>
                         @enderror
+
+                        {{-- Tipologie --}}
+                        <div class="mb-4 row">
+                            <label for="tipologies"
+                                class="col-md-4 col-form-label text-md-right">{{ __('Choose the tipology of your restaurant') }}</label>
+                            <div class="col-md-6">
+                                <select class="dropdown" multiple name="tipologies[]">
+                                    @forelse ($tipologies as $tipology)
+                                        @if ($errors->any())
+                                            <!-- Pagina con errori di validazione, deve usare old per verificare quale id di tipology preselezionare -->
+                                            <option value="{{ $tipology->id }}"
+                                                {{ in_array($tipology->id, old('tipologies', [])) ? 'selected' : '' }}>
+                                                {{ $tipology->name }}</option>
+                                        @else
+                                            <!-- Pagina caricate per la prima volta: deve mostrarare i tipology preseleziononati dal db -->
+                                            <option value="{{ $tipology->id }}"
+                                                {{ $restaurants->tipologies->contains($tipology->id) ? 'selected' : '' }}>
+                                                {{ $tipology->name }}</option>
+                                        @endif
+                                    @empty
+                                        <option value="" disabled>Sorry 😥 no tipologies in the system</option>
+                                    @endforelse
+                                </select>
+                            </div>
+
+                        </div>
 
                         <button type="submit" class="btn btn-primary">Update</button>
                     </form>

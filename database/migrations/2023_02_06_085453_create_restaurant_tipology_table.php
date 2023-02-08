@@ -14,14 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('restaurant_tipology', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_restaurant');
-            $table->foreign('id_restaurant')->references('id')->on('restaurants')->cascadeOnDelete();
+            $table->unsignedBigInteger('restaurant_id');
+            $table->foreign('restaurant_id')->references('id')->on('restaurants')->cascadeOnDelete();
 
-            $table->unsignedBigInteger('id_tipology');
-            $table->foreign('id_tipology')->references('id')->on('tipologies')->cascadeOnDelete();
+            $table->unsignedBigInteger('tipology_id');
+            $table->foreign('tipology_id')->references('id')->on('tipologies')->cascadeOnDelete();
 
-            $table->primary(['id_restaurant','id_tipology']);
-            
+            $table->primary(['restaurant_id', 'tipology_id']);
         });
     }
 
