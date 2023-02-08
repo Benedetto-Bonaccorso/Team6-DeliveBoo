@@ -29,7 +29,7 @@ class UpdateRestaurantRequest extends FormRequest
             'phone_number' => 'nullable|max:15',
             'piva' => 'required|max:11',
             'address' => 'nullable|max:150',
-            'cover_image' => 'nullable|image|max:250',
+            'cover_image' => 'nullable|image|max:250'
         ];
     }
 }

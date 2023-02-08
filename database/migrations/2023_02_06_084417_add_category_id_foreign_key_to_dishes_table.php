@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('dishes', function (Blueprint $table) {
-            $table->unsignedBigInteger("id_category")->nullable()->after("id");
-            $table->foreign("id_category")->references("id")->on("categories")->onDelete("set null");
+            $table->unsignedBigInteger("category_id")->nullable()->after("id");
+            $table->foreign("category_id")->references("id")->on("categories")->onDelete("set null");
         });
     }
 
@@ -27,8 +27,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('dishes', function (Blueprint $table) {
-            $table->dropForeign("dishes_id_category_foreign");
-            $table->dropColumn("id_category");
+            $table->dropForeign("dishes_category_foreign_id");
+            $table->dropColumn("category_id");
         });
     }
 };
