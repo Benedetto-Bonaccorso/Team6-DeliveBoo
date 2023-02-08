@@ -108,12 +108,12 @@
                                 @forelse ($tipologies as $tipology)
                                     @if ($errors->any())
                                         <!-- Pagina con errori di validazione, deve usare old per verificare quale id di tipology preselezionare -->
-                                        <option value="{{ $tipology->id }}"
+                                        <option title="{{ $tipology->name }}" value="{{ $tipology->id }}"
                                             {{ in_array($tipology->id, old('tipologies', [])) ? 'selected' : '' }}>
                                             {{ $tipology->name }}</option>
                                     @else
                                         <!-- Pagina caricate per la prima volta: deve mostrarare i tipology preseleziononati dal db -->
-                                        <option value="{{ $tipology->id }}"
+                                        <option title="{{ $tipology->name }}" value="{{ $tipology->id }}"
                                             {{ $restaurants->tipologies->contains($tipology->id) ? 'selected' : '' }}>
                                             {{ $tipology->name }}</option>
                                     @endif
