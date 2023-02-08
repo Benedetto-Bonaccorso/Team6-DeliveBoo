@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\RestaurantController;
 |
 */
 
+
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('admin.dashboard');
