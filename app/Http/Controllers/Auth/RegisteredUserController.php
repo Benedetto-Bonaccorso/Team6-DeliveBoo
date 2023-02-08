@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use App\Models\Restaurant;
+use App\Models\Tipology;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class RegisteredUserController extends Controller
 {
@@ -22,7 +24,10 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+
+        $tipologies = Tipology::orderBYDesc('id')->get();
+
+        return view('auth.register',compact('tipologies'));
     }
 
     /**
@@ -32,6 +37,8 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+
+     
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
@@ -47,7 +54,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        Restaurant::create([
+       $restaurant= Restaurant::create([
             'user_id' => $user->id,
             'name' => $request->name_restaurant,
             'slug' => Str::slug($request->name_restaurant),
@@ -57,7 +64,21 @@ class RegisteredUserController extends Controller
             'cover_image' => ''
         ]);
 
+        $types_ids = array();
+        foreach ($request->types as $type =>$value) {
+       
+            $types_ids[$type]= $value;
+          }
 
+        foreach ($types_ids as $type_id) {
+            
+            DB::table('restaurant_tipology')->insert([
+                'id_restaurant' =>  $restaurant->id,
+                'id_tipology' =>$type_id
+            ]);
+        }
+      
+     
 
         event(new Registered($user));
 
