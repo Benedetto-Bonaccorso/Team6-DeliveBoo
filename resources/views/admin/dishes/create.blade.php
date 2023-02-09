@@ -82,9 +82,8 @@
 
                         {{-- Dish visibility --}}
                         <div class="form-check">
-                            <input checked class="form-check-input" type="checkbox" value="1" id="visible"
-                                name="visible">
                             <input type="hidden" name="visible" value="0" id="visible">
+                            <input class="form-check-input" type="checkbox" value="1" id="visible" name="visible">
                             <label class="form-check-label" for="visible">
                                 Piatto disponibile
                             </label>
@@ -96,7 +95,7 @@
                         @enderror
                         {{-- /Dish visibility --}}
 
-                        <button type="submit" class="btn btn-primary">Aggiungi piatto</button>
+                        <button type="submit" class="btn btn-primary my-3">Aggiungi piatto</button>
                     </form>
                 </div>
             </div>

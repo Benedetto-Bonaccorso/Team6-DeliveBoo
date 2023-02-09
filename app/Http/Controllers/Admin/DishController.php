@@ -45,6 +45,7 @@ class DishController extends Controller
     public function store(StoreDishRequest $request)
     {
         $restaurant = Auth::user()->restaurants;
+        // dd($request->all());
 
         $data = $request->validated();
 
