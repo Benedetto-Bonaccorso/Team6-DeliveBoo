@@ -54,14 +54,14 @@
                                     <a href="{{ route('admin.dishes.edit', $dish->id) }}"
                                         class="btn bg-dark text-white w-100 my-2">Edit</a>
 
-                                    <form action="{{ route('admin.dishes.destroy', $dish->id) }}" method="post"
-                                        class="">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn bg-danger text-white w-100 my-2">
-                                            Delete
-                                        </button>
-                                    </form>
+                                    {{-- Modal trigger button for delete --}}
+                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#delete_dish_{{ $dish->id }}">
+                                        Delete
+                                    </button>
+
+                                    {{-- Modal body --}}
+                                    @include('admin.partials.modal')
                                 </td>
                             </tr>
                         @endforeach
