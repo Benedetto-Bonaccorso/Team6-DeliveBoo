@@ -2,8 +2,7 @@
     <nav class="navbar navbar-expand-md p-1  shadow-sm">
         <div class="container">
             <div class="logo">
-                <img class="img-fluid" width="200" src="{{ asset('storage/assets/img/logo-deliveboo.png') }}"
-                    alt="">
+                <img class="img-fluid" width="200" src="{{ asset('img/logo-deliveboo.png') }}" alt="">
             </div>
             {{-- config('app.name', 'Laravel') --}}
 
