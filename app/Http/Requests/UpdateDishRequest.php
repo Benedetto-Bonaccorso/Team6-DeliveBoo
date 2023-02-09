@@ -28,7 +28,7 @@ class UpdateDishRequest extends FormRequest
         return [
             // 'name' => 'required|unique:dishes,name|max:50', //Rule::unique('posts')->ignore($this->post->id)]
             'name' => ['required', 'max:50', Rule::unique('dishes')->ignore($this->dish->id)],
-            'description' => 'nullable',
+            'description' => 'required',
             'price' => 'required|between:0,999.99',
             'visible' => 'boolean',
             'cover_image' => 'nullable|image|max:250'
