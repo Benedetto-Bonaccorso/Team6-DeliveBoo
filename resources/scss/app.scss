@@ -12,20 +12,21 @@ $main-color-brown: #a16e2b;
 
 
 .sidebar {
-    background-color: $main-color-1 !important;
+
     font-size: 1.5rem !important;
+    font-weight: 600;
 
     .nav-link {
-        color: black;
+        color: $main-color-2-dark;
 
         &:hover {
 
-            color: white;
+            color: $main-color-1;
         }
     }
 
     .active {
-        color: white;
+        color: $main-color-1;
     }
 }
 
@@ -46,7 +47,7 @@ $main-color-brown: #a16e2b;
 /* header style */
 
 header {
-    background-color: $main-color-1;
+    // background-color: $main-color-1;
     font-size: 1.5rem !important;
     font-weight: 600;
     padding: 0;
@@ -58,11 +59,11 @@ header {
     }
 
     .nav-link {
-        color: black;
+        color: $main-color-2-dark;
 
         &:hover {
 
-            color: white;
+            color: $main-color-1-dark;
         }
     }
 
@@ -73,10 +74,10 @@ header {
             transition: all 1s;
             width: 50px;
             height: 50px;
-            background: white;
+            background: $main-color-1;
             box-sizing: border-box;
             border-radius: 25px;
-            border: 4px solid white;
+            border: 4px solid $main-color-1;
             padding: 5px;
         }
 
@@ -85,26 +86,31 @@ header {
             top: 0;
             left: 0;
             width: 100%;
-            ;
+            background-color: $main-color-1 ;
+            color: $main-color-2-dark;
+
             height: 42.5px;
             line-height: 30px;
             outline: 0;
             border: 0;
             display: none;
             font-size: 1em;
+            font-weight: 500;
             border-radius: 20px;
-            padding: 0 20px;
+            padding: 0px 40px 0px 10px;
+
         }
 
         .fa {
             box-sizing: border-box;
-            padding: 10px;
-            width: 42.5px;
-            height: 42.5px;
+            padding: 8px 0px 0px 0px;
+
+            width: 20px;
+            height: 20px;
             position: absolute;
             top: 0;
-            right: 0;
-            border-radius: 50%;
+            right: 15px;
+            border-radius: 40%;
             color: #07051a;
             text-align: center;
             font-size: 1.2em;
@@ -113,8 +119,9 @@ header {
 
         form:hover,
         form:valid {
-            width: 300px;
+            width: 350px;
             cursor: pointer;
+
         }
 
         form:hover input,
@@ -124,8 +131,9 @@ header {
 
         form:hover .fa,
         form:valid .fa {
-            background: #07051a;
-            color: white;
+
+            color: $main-color-2-dark;
+
         }
 
 
@@ -148,9 +156,12 @@ header {
     }
 
     .dropdown-menu {
-        background-color: $main-color-1;
-        font-weight: 600;
-        font-size: 1.5rem;
+        a {
+            font-weight: 500;
+            font-size: 1.2rem;
+            color: $main-color-2-dark !important;
+        }
+
     }
 }
 
