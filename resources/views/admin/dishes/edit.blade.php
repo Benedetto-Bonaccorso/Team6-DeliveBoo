@@ -65,9 +65,27 @@
                             </div>
                         @enderror
                         <br>
-                        <label class="form-label me-2" for="visible">Visibility</label>
-                        <input type="checkbox" name="visible" id="visible" class="switch-input" value="1"
-                            {{ old('visible') ? 'checked="checked"' : '' }} />
+
+                        {{-- Dish visibility --}}
+                        <div class="form-check">
+                            @if ($dish->visible)
+                                <input checked class="form-check-input" type="checkbox" value="1" id="visible"
+                                    name="visible">
+                                <input type="hidden" name="visible" value="0" id="visible">
+                            @else
+                                <input type="hidden" name="visible" value="0" id="visible">
+                                <input class="form-check-input" type="checkbox" value="1" id="visible">
+                            @endif
+                            <label class="form-check-label" for="visible">
+                                Piatto disponibile
+                            </label>
+                        </div>
+                        @error('visible')
+                            <div class="alert alert-danger" role="alert">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                        {{-- /Dish visibility --}}
                         <br>
                         <button class="btn btn-primary my-2" type="submit">Send</button>
                     </div>

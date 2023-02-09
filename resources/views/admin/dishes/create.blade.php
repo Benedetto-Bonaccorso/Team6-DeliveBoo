@@ -20,7 +20,7 @@
                 @endif
 
                 <div class="container">
-                    <h1 class="text-center">Aggiungi un nuovo piatto al tuo ristorante</h1>
+                    <h1 class="text-center my-4">Aggiungi un nuovo piatto al tuo ristorante</h1>
                     <form action="{{ route('admin.dishes.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
 
@@ -55,7 +55,7 @@
                                 la
                                 descrizione
                                 del piatto</label>
-                            <textarea class="form-control" name="description" id="description" rows="5"></textarea>
+                            <textarea class="form-control" name="description" id="description" rows="5" value="{{ old('description') }}"></textarea>
                         </div>
                         @error('description')
                             <div class="alert alert-danger" role="alert">
@@ -68,7 +68,8 @@
                         <div class="mb-3">
                             <label for="price" class="form-label">Prezzo</label>
                             <input type="number" class="form-control @error('price') is-invalid @enderror" name="price"
-                                id="price" aria-describedby="priceHelper" placeholder="" step="0.01">
+                                id="price" aria-describedby="priceHelper" placeholder="" step="0.01"
+                                value="{{ old('price') }}">
                             <small id="priceHelper" class="form-text text-muted">Scegli il prezzo del piatto</small>
                         </div>
                         @error('price')
@@ -78,10 +79,12 @@
                         @enderror
                         {{-- /Dish price --}}
 
+
                         {{-- Dish visibility --}}
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox"
-                                value="1 {{ old('visible') ? 'checked="checked"' : '' }}" id="visible">
+                            <input checked class="form-check-input" type="checkbox" value="1" id="visible"
+                                name="visible">
+                            <input type="hidden" name="visible" value="0" id="visible">
                             <label class="form-check-label" for="visible">
                                 Piatto disponibile
                             </label>

@@ -21,15 +21,13 @@
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">name</th>
-                            <th scope="col">ID_Category</th>
-                            <th scope="col">ID_Reastaurant</th>
+                            <th scope="col">Name</th>
                             <th scope="col">Slug</th>
                             <th scope="col">Description</th>
                             <th scope="col">Price</th>
-                            <th scope="col">visible</th>
+                            <th scope="col">Visible</th>
                             <th scope="col">Immagine</th>
-                            <th scope="col">actions</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,12 +35,16 @@
                             <tr class="">
                                 <td scope="row">{{ $dish->id }}</td>
                                 <td>{{ $dish->name }}</td>
-                                <td>{{ $dish->id_category }}</td>
-                                <td>{{ $dish->id_restaurant }}</td>
                                 <td>{{ $dish->slug }}</td>
                                 <td>{{ $dish->description }}</td>
                                 <td>{{ $dish->price }}</td>
-                                <td>{{ $dish->visible }}</td>
+                                <td>
+                                    @if ($dish->visible)
+                                        'Visible'
+                                    @else
+                                        'Hidden'
+                                    @endif
+                                </td>
                                 <td><img width="200" src="{{ asset('storage/' . $dish->cover_image) }}" alt="">
                                 </td>
                                 <td>
