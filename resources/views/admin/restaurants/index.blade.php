@@ -6,7 +6,7 @@
         <div class="row">
             @include('admin.partials.navbar')
 
-            <div class="col">
+            <div class="col mt-5">
                 <div class="text-center">
                     <h1>{{ $restaurants->name }}</h1>
                     <img width="300" src="{{ $restaurants->cover_image }}" alt="">
@@ -37,7 +37,7 @@
                     @method('PUT')
 
                     <div class="mb-3">
-                        <label for="name" class="form-label">name</label>
+                        <label for="name" class="form-label">Restaurant's name</label>
                         <input type="text" name="name" id="name"
                             class="form-control @error('name') is-invalid @enderror" placeholder="learn laravel 9"
                             aria-describedby="nameHelper" value="{{ old('name', $restaurants->name) }}">
@@ -50,7 +50,7 @@
 
                     <div class="mb-3 d-flex gap-4">
                         <div>
-                            <label for="cover_image" class="form-label">Replace Cover Image</label>
+                            <label for="cover_image" class="form-label">Choose an image for your restaurant</label>
                             <input type="file" name="cover_image" id="cover_image"
                                 class="form-control  @error('cover_image') is-invalid @enderror" placeholder=""
                                 aria-describedby="coverImageHelper">
@@ -78,7 +78,7 @@
                     @enderror
 
                     <div class="mb-3">
-                        <label for="piva" class="form-label">Partita Iva</label>
+                        <label for="piva" class="form-label">Vat number</label>
                         <input type="text" name="piva" id="piva"
                             class="form-control @error('piva') is-invalid @enderror" placeholder="learn laravel 9"
                             aria-describedby="pivaHelper" value="{{ old('piva', $restaurants->piva) }}">

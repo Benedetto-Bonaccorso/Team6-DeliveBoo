@@ -11,6 +11,10 @@ $main-color-2-dark: #7c0909;
 $main-color-brown: #a16e2b;
 
 
+.h-8 {
+    height: 8rem;
+}
+
 .sidebar {
 
     font-size: 1.5rem !important;
@@ -48,9 +52,10 @@ $main-color-brown: #a16e2b;
 
 header {
     // background-color: $main-color-1;
-    font-size: 1.5rem !important;
+    font-size: 1.6rem !important;
     font-weight: 600;
     padding: 0;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
 
 
     i {

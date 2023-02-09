@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-md p-1  shadow-sm">
+    <nav class="navbar navbar-expand-md p-1 shadow-sm h-8">
         <div class="container">
             <div class="logo">
                 <img class="img-fluid" width="200" src="{{ asset('img/logo-deliveboo.png') }}" alt="">

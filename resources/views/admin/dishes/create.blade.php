@@ -8,7 +8,7 @@
 
             @include('admin.partials.navbar')
 
-            <div class="col">
+            <div class="col mt-5">
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
