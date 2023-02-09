@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             @include('admin.partials.navbar')
-            <div class="col">
+            <div class="col mt-5">
                 <div class="card mt-3" style="width: 18rem;">
                     {{-- Check if there is a cover image --}}
                     @if ($dish->cover_image)
