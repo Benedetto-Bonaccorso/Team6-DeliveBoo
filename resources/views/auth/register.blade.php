@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container mt-4">
+        @include('admin.partials.error')
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -84,8 +85,15 @@
                                 <label for="name_restaurant"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Name of the Restaurant ') }}</label>
                                 <div class="col-md-6">
-                                    <input id="name_restaurant" type="text" class="form-control" name="name_restaurant"
+                                    <input id="name_restaurant" type="text"
+                                        class="form-control @error('name') is-invalid @enderror" name="name_restaurant"
                                         required autocomplete="name_restaurant">
+
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -106,6 +114,11 @@
                                 <div class="col-md-6">
                                     <input id="piva" type="text" class="form-control" name="piva" required
                                         autocomplete="piva">
+                                    @error('piva')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
