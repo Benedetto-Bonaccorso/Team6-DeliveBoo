@@ -41,8 +41,8 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
-
         $data = $request->validated();
+
 
         /* if ($data->fails()) {
             return response()->json([

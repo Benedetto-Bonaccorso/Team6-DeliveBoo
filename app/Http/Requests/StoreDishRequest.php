@@ -26,7 +26,7 @@ class StoreDishRequest extends FormRequest
         // TODO: aggiungere i vari parametri
         return [
             'name' => 'required|unique:dishes,name|max:50',
-            'description' => 'nullable',
+            'description' => 'required',
             'price' => 'required|between:0,999.99',
             'visible' => 'boolean',
             'cover_image' => 'nullable|image|max:250'
