@@ -69,12 +69,13 @@
                         {{-- Dish visibility --}}
                         <div class="form-check">
                             @if ($dish->visible)
+                                <input type="hidden" name="visible" value="0" id="visible">
                                 <input checked class="form-check-input" type="checkbox" value="1" id="visible"
                                     name="visible">
-                                <input type="hidden" name="visible" value="0" id="visible">
                             @else
                                 <input type="hidden" name="visible" value="0" id="visible">
-                                <input class="form-check-input" type="checkbox" value="1" id="visible">
+                                <input class="form-check-input" type="checkbox" value="1" id="visible"
+                                    name="visible">
                             @endif
                             <label class="form-check-label" for="visible">
                                 Piatto disponibile
