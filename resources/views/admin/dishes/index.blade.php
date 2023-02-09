@@ -44,7 +44,7 @@
                                         'Hidden'
                                     @endif
                                 </td>
-                                <td><img width="200" src="{{ asset('storage/' . $dish->cover_image) }}" alt="">
+                                <td><img width="150" src="{{ asset('storage/' . $dish->cover_image) }}" alt="">
                                 </td>
                                 <td class="align-middle text-center">
                                     <a class="btn btn-primary" href="{{ route('admin.dishes.show', $dish->id) }}"
