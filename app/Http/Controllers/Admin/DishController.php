@@ -23,6 +23,7 @@ class DishController extends Controller
     {
         // $dishes = Dish::all();
         $dishes = Auth::user()->restaurants->dishes;
+        $dishes = collect($dishes)->sortBy('name');
         return view("admin.dishes.index", compact("dishes"));
     }
 
