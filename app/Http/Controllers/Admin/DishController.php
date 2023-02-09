@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\support\Str;
+use Illuminate\Support\Facades\Auth;
+
 
 class DishController extends Controller
 {
@@ -19,7 +21,8 @@ class DishController extends Controller
      */
     public function index()
     {
-        $dishes = Dish::all();
+        // $dishes = Dish::all();
+        $dishes = Auth::user()->restaurants->dishes;
         return view("admin.dishes.index", compact("dishes"));
     }
 
@@ -41,15 +44,10 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request)
     {
+        $restaurant = Auth::user()->restaurants;
+
         $data = $request->validated();
 
-
-        /* if ($data->fails()) {
-            return response()->json([
-                "success" => false,
-                "message" => $data->errors()
-            ]);
-        } */
 
         if ($request->hasFile('cover_image')) {
             $cover_image = Storage::put('uploads', $data['cover_image']);
@@ -58,9 +56,11 @@ class DishController extends Controller
 
         $newDish = new Dish();
         $newDish->fill($data);
-        //$newDish->cover_image = Storage::disk('public')->put('dishes_img', $request->cover_image);
+
         $newDish->slug = Str::slug($request["name"]);
-        $newDish->save();
+
+        $newDish = $restaurant->dishes()->save($newDish);
+
 
         return to_route("admin.dishes.index");
     }
