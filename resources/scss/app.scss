@@ -15,6 +15,17 @@ $main-color-brown: #a16e2b;
     height: 8rem;
 }
 
+.btn-primary {
+    background-color: $main-color-1;
+    border: $main-color-1;
+    color: #07051a;
+    transition: 0.5s;
+
+    &:hover {
+        background-color: $main-color-1-dark;
+    }
+}
+
 .sidebar {
 
     font-size: 1.5rem !important;

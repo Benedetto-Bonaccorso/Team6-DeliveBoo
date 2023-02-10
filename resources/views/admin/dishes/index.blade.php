@@ -7,7 +7,7 @@
 
 
             <div class="col table-responsive d-flex flex-column align-items-center mx-5">
-                <a class="btn btn-warning m-4" href=" {{ route('admin.dishes.create') }}">Add a new dish</a>
+                <a class="btn btn-primary m-4" href=" {{ route('admin.dishes.create') }}">Add a new dish</a>
 
 
                 @if (session('message'))
@@ -21,8 +21,8 @@
                         <tr>
                             <th scope="col">Name</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Visible</th>
-                            <th scope="col">Immagine</th>
+                            <th scope="col">Availability</th>
+                            <th scope="col">Image</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -41,13 +41,15 @@
                                 <td><img width="150" src="{{ asset('storage/' . $dish->cover_image) }}" alt="">
                                 </td>
                                 <td class="align-middle text-center">
-                                    <a class="btn btn-primary" href="{{ route('admin.dishes.show', $dish->slug) }}"
-                                        role="button"><i class="fas fa-eye fa-sm fa-fw"></i></a>
-                                    <a class="btn btn-primary" href="{{ route('admin.dishes.edit', $dish->slug) }}"
-                                        role="button"><i class="fas fa-pencil fa-sm fa-fw"></i></a>
+                                    <a class="btn btn-primary text-white"
+                                        href="{{ route('admin.dishes.show', $dish->slug) }}" role="button"><i
+                                            class="fas fa-eye fa-sm fa-fw"></i></a>
+                                    <a class="btn btn-primary text-white"
+                                        href="{{ route('admin.dishes.edit', $dish->slug) }}" role="button"><i
+                                            class="fas fa-pencil fa-sm fa-fw"></i></a>
 
                                     {{-- Modal trigger button for delete --}}
-                                    <button type="button" class="btn btn-danger btn-md" data-bs-toggle="modal"
+                                    <button type="button" class="btn btn-danger text-white btn-md" data-bs-toggle="modal"
                                         data-bs-target="#delete_dish_{{ $dish->id }}">
                                         <i class="fas fa-trash fa-sm fa-fw"></i>
                                     </button>
