@@ -30,17 +30,15 @@
                             <input type="file" name="cover_image" id="cover_image"
                                 class="form-control @error('cover_image') is-invalid @enderror"
                                 placeholder="Add a cover image" aria-describedby="coverImageHelper">
-                            <small id="coverImageHelper" class="text-muted">Aggiungi una foto del piatto</small>
                         </div>
                         {{-- /Dish cover_image --}}
 
                         {{-- Dish name --}}
                         <div class="mb-3">
                             <label for="name" class="form-label">Nome</label>
-                            <input type="text" name="name" id="name"
+                            <input required type="text" name="name" id="name"
                                 class="form-control @error('name') is-invalid @enderror" placeholder="Carbonara"
                                 aria-describedby="nameHelper" value="{{ old('name') }}">
-                            <small id="nameHelper" class="text-muted">Inserisci un nome per il tuo nuovo piatto</small>
                         </div>
                         @error('name')
                             <div class="alert alert-danger" role="alert">
@@ -55,7 +53,8 @@
                                 la
                                 descrizione
                                 del piatto</label>
-                            <textarea class="form-control" name="description" id="description" rows="5" value="{{ old('description') }}"></textarea>
+                            <textarea required class="form-control" name="description" id="description" rows="5"
+                                value="{{ old('description') }}"></textarea>
                         </div>
                         @error('description')
                             <div class="alert alert-danger" role="alert">
@@ -67,10 +66,9 @@
                         {{-- Dish price --}}
                         <div class="mb-3">
                             <label for="price" class="form-label">Prezzo</label>
-                            <input type="number" class="form-control @error('price') is-invalid @enderror" name="price"
-                                id="price" aria-describedby="priceHelper" placeholder="" step="0.01"
+                            <input required type="number" class="form-control @error('price') is-invalid @enderror"
+                                name="price" id="price" aria-describedby="priceHelper" placeholder="" step="0.01"
                                 value="{{ old('price') }}">
-                            <small id="priceHelper" class="form-text text-muted">Scegli il prezzo del piatto</small>
                         </div>
                         @error('price')
                             <div class="alert alert-danger" role="alert">
@@ -94,6 +92,10 @@
                             </div>
                         @enderror
                         {{-- /Dish visibility --}}
+
+                        <div class="mt-3">
+                            <small id="priceHelper" class="text-muted">Campo obbligatorio</small>
+                        </div>
 
                         <button type="submit" class="btn btn-primary my-3">Aggiungi piatto</button>
                     </form>

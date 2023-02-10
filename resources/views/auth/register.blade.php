@@ -15,10 +15,10 @@
                             {{-- name --}}
                             <div class="mb-4 row">
                                 <label for="name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Name*') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text"
+                                    <input required id="name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
                                         value="{{ old('name') }}" required autocomplete="name" autofocus>
 
@@ -33,10 +33,10 @@
                             {{-- email --}}
                             <div class="mb-4 row">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address*') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email"
+                                    <input required id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
                                         value="{{ old('email') }}" required autocomplete="email">
 
@@ -51,10 +51,10 @@
                             {{-- password --}}
                             <div class="mb-4 row">
                                 <label for="password"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Password*') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password"
+                                    <input required id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="new-password">
 
@@ -69,10 +69,10 @@
                             {{-- confirm pass --}}
                             <div class="mb-4 row">
                                 <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password*') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control"
+                                    <input required id="password-confirm" type="password" class="form-control"
                                         name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
@@ -83,9 +83,9 @@
 
                             <div class="mb-4 row">
                                 <label for="name_restaurant"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Name of the Restaurant ') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Name of the Restaurant*') }}</label>
                                 <div class="col-md-6">
-                                    <input id="name_restaurant" type="text"
+                                    <input required id="name_restaurant" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name_restaurant"
                                         required autocomplete="name_restaurant">
 
@@ -110,10 +110,10 @@
                             {{-- PIVA --}}
                             <div class="mb-4 row">
                                 <label for="piva"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Restaurant vat number') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Restaurant vat number*') }}</label>
                                 <div class="col-md-6">
-                                    <input id="piva" type="text" class="form-control" name="piva" required
-                                        autocomplete="piva">
+                                    <input required id="piva" type="text" class="form-control" name="piva"
+                                        required autocomplete="piva">
                                     @error('piva')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -148,6 +148,10 @@
                                     </select>
                                 </div>
 
+                            </div>
+
+                            <div class="mb-3">
+                                <small id="priceHelper" class="text-muted">* Campo obbligatorio</small>
                             </div>
 
                             <div class="mb-4 row mb-0">

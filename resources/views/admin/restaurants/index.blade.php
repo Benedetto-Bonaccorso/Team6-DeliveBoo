@@ -38,9 +38,9 @@
 
                     <div class="mb-3">
                         <label for="name" class="form-label">Restaurant's name</label>
-                        <input type="text" name="name" id="name"
-                            class="form-control @error('name') is-invalid @enderror" placeholder="learn laravel 9"
-                            aria-describedby="nameHelper" value="{{ old('name', $restaurants->name) }}">
+                        <input required type="text" name="name" id="name"
+                            class="form-control @error('name') is-invalid @enderror" aria-describedby="nameHelper"
+                            value="{{ old('name', $restaurants->name) }}">
                     </div>
                     @error('name')
                         <div class="alert alert-danger" role="alert">
@@ -67,7 +67,7 @@
                     <div class="mb-3">
                         <label for="phone_number" class="form-label">Phone</label>
                         <input type="text" name="phone_number" id="phone_number"
-                            class="form-control @error('phone_number') is-invalid @enderror" placeholder="learn laravel 9"
+                            class="form-control @error('phone_number') is-invalid @enderror"
                             aria-describedby="phone_numberHelper"
                             value="{{ old('phone_number', $restaurants->phone_number) }}">
                     </div>
@@ -79,9 +79,9 @@
 
                     <div class="mb-3">
                         <label for="piva" class="form-label">Vat number</label>
-                        <input type="text" name="piva" id="piva"
-                            class="form-control @error('piva') is-invalid @enderror" placeholder="learn laravel 9"
-                            aria-describedby="pivaHelper" value="{{ old('piva', $restaurants->piva) }}">
+                        <input required type="text" name="piva" id="piva"
+                            class="form-control @error('piva') is-invalid @enderror" aria-describedby="pivaHelper"
+                            value="{{ old('piva', $restaurants->piva) }}">
                     </div>
                     @error('piva')
                         <div class="alert alert-danger" role="alert">
@@ -92,8 +92,8 @@
                     <div class="mb-3">
                         <label for="address" class="form-label">Address</label>
                         <input type="text" name="address" id="address"
-                            class="form-control @error('address') is-invalid @enderror" placeholder="learn laravel 9"
-                            aria-describedby="addressHelper" value="{{ old('address', $restaurants->address) }}">
+                            class="form-control @error('address') is-invalid @enderror" aria-describedby="addressHelper"
+                            value="{{ old('address', $restaurants->address) }}">
                     </div>
 
                     @error('address')
@@ -126,6 +126,10 @@
                             </select>
                         </div>
 
+                    </div>
+
+                    <div class="mb-3">
+                        <small id="priceHelper" class="text-muted">* Campo obbligatorio</small>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Update</button>
