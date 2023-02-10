@@ -16,17 +16,18 @@ class TipologySeeder extends Seeder
      */
     public function run()
     {
-        $tipologies = [ 'Italiana'   =>[""," Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus impedit magnam cum tempora aliquam ex, minus odit aliquid id eos."],
-                        'Cinese'     =>[""," Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus impedit magnam cum tempora aliquam ex, minus odit aliquid id eos."],
-                        'Messicana'  =>[""," Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus impedit magnam cum tempora aliquam ex, minus odit aliquid id eos."],
-                        'Vegana'     =>[""," Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus impedit magnam cum tempora aliquam ex, minus odit aliquid id eos."],
-                        'Giapponese' =>[""," Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus impedit magnam cum tempora aliquam ex, minus odit aliquid id eos."],
-                        'Celiaca'    =>[""," Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus impedit magnam cum tempora aliquam ex, minus odit aliquid id eos."],
-                        'Indiana'    =>[""," Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus impedit magnam cum tempora aliquam ex, minus odit aliquid id eos."],
-                        'StreetFood' =>[""," Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus impedit magnam cum tempora aliquam ex, minus odit aliquid id eos."]
-                        ];
+        $tipologies = [
+            'Italian'   => ["", " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus impedit magnam cum tempora aliquam ex, minus odit aliquid id eos."],
+            'Chinese'     => ["", " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus impedit magnam cum tempora aliquam ex, minus odit aliquid id eos."],
+            'Mexican'  => ["", " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus impedit magnam cum tempora aliquam ex, minus odit aliquid id eos."],
+            'Vegan'     => ["", " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus impedit magnam cum tempora aliquam ex, minus odit aliquid id eos."],
+            'Japanese' => ["", " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus impedit magnam cum tempora aliquam ex, minus odit aliquid id eos."],
+            'Gluten-free'    => ["", " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus impedit magnam cum tempora aliquam ex, minus odit aliquid id eos."],
+            'Indian'    => ["", " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus impedit magnam cum tempora aliquam ex, minus odit aliquid id eos."],
+            'StreetFood' => ["", " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus impedit magnam cum tempora aliquam ex, minus odit aliquid id eos."]
+        ];
 
-        foreach ($tipologies as $key=> $tipology) {
+        foreach ($tipologies as $key => $tipology) {
             $newtipology = new tipology();
             $newtipology->name = $key;
             $newtipology->slug = Str::slug($newtipology->name);
