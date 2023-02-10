@@ -13,7 +13,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Dismiss</button>
-                <form action="{{ route('admin.dishes.destroy', $dish->id) }}" method="POST">
+                <form action="{{ route('admin.dishes.destroy', $dish->slug) }}" method="POST">
                     @csrf
                     @method('DELETE')
 
