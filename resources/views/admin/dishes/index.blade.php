@@ -19,10 +19,7 @@
                 <table class="table table-orange">
                     <thead>
                         <tr>
-                            <th scope="col">ID</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Slug</th>
-                            <th scope="col">Description</th>
                             <th scope="col">Price</th>
                             <th scope="col">Visible</th>
                             <th scope="col">Immagine</th>
@@ -32,16 +29,13 @@
                     <tbody class="table-group-divider">
                         @foreach ($dishes as $dish)
                             <tr class="">
-                                <td scope="row">{{ $dish->id }}</td>
                                 <td>{{ $dish->name }}</td>
-                                <td>{{ $dish->slug }}</td>
-                                <td>{{ $dish->description }}</td>
                                 <td>{{ $dish->price }}</td>
                                 <td>
                                     @if ($dish->visible)
-                                        'Visible'
+                                        'Available'
                                     @else
-                                        'Hidden'
+                                        'Not Available'
                                     @endif
                                 </td>
                                 <td><img width="150" src="{{ asset('storage/' . $dish->cover_image) }}" alt="">
