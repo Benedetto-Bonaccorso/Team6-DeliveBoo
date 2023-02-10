@@ -83,7 +83,7 @@
 
                             <div class="mb-4 row">
                                 <label for="name_restaurant"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Name of the Restaurant*') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Name*') }}</label>
                                 <div class="col-md-6">
                                     <input required id="name_restaurant" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name_restaurant"
@@ -100,7 +100,7 @@
                             {{-- telefono ristorante --}}
                             <div class="mb-4 row">
                                 <label for="phone"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Restaurant phone number') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Phone number') }}</label>
                                 <div class="col-md-6">
                                     <input id="phone" type="text" class="form-control" name="phone" required
                                         autocomplete="phone">
@@ -110,7 +110,7 @@
                             {{-- PIVA --}}
                             <div class="mb-4 row">
                                 <label for="piva"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Restaurant vat number*') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Vat number*') }}</label>
                                 <div class="col-md-6">
                                     <input required id="piva" type="text" class="form-control" name="piva"
                                         required autocomplete="piva">
@@ -125,7 +125,7 @@
                             {{-- Indirizzo --}}
                             <div class="mb-4 row">
                                 <label for="address"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Restaurant address') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
                                 <div class="col-md-6">
                                     <input id="address" type="text" class="form-control" name="address" required
                                         autocomplete="address">
@@ -135,7 +135,7 @@
                             {{-- Tipologie --}}
                             <div class="mb-4 row">
                                 <label for="types"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Choose the types of your restaurant') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Choose the types') }}</label>
                                 <div class="col-md-6">
                                     <select class="dropdown" multiple name="types[]">
                                         @forelse($tipologies as $tipology)
@@ -151,7 +151,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <small id="priceHelper" class="text-muted">* Campo obbligatorio</small>
+                                <small id="priceHelper" class="text-muted">* Required Field</small>
                             </div>
 
                             <div class="mb-4 row mb-0">

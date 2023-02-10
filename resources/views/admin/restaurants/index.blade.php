@@ -37,7 +37,7 @@
                     @method('PUT')
 
                     <div class="mb-3">
-                        <label for="name" class="form-label">Restaurant's name</label>
+                        <label for="name" class="form-label">Name</label>
                         <input required type="text" name="name" id="name"
                             class="form-control @error('name') is-invalid @enderror" aria-describedby="nameHelper"
                             value="{{ old('name', $restaurants->name) }}">
@@ -50,7 +50,7 @@
 
                     <div class="mb-3 d-flex gap-4">
                         <div>
-                            <label for="cover_image" class="form-label">Choose an image for your restaurant</label>
+                            <label for="cover_image" class="form-label">Image</label>
                             <input type="file" name="cover_image" id="cover_image"
                                 class="form-control  @error('cover_image') is-invalid @enderror" placeholder=""
                                 aria-describedby="coverImageHelper">
@@ -105,7 +105,7 @@
                     {{-- Tipologie --}}
                     <div class="mb-4 row">
                         <label for="tipologies"
-                            class="col-md-4 col-form-label text-md-right">{{ __('Choose the tipology of your restaurant') }}</label>
+                            class="col-md-4 col-form-label text-md-right">{{ __('Choose the tipology') }}</label>
                         <div class="col-md-6">
                             <select class="dropdown" multiple name="tipologies[]">
                                 @forelse ($tipologies as $tipology)
@@ -129,7 +129,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <small id="priceHelper" class="text-muted">* Campo obbligatorio</small>
+                        <small id="priceHelper" class="text-muted">* Required Field</small>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Update</button>
