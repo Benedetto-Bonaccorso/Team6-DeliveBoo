@@ -9,15 +9,6 @@
             @include('admin.partials.navbar')
 
             <div class="col mt-5">
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
 
                 <div class="container">
                     <h1 class="text-center my-4">Aggiungi un nuovo piatto al tuo ristorante</h1>

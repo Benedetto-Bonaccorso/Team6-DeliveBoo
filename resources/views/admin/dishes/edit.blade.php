@@ -1,22 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="container-fluid">
         <div class="row">
             @include('admin.partials.navbar')
 
 
             <div class="col mt-5">
-                @if ($errors->any())
-                    <div class="alert alert-danger" role="alert">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
 
                 <form action="{{ route('admin.dishes.update', $dish->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -34,7 +24,7 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                        <br>
+
                         <label class="form-label"for="name">Name</label>
                         <input required class="mb-1 form-control @error('name') is-invalid @enderror" type="text"
                             title="name" name="name" id="name" value="{{ old('name', $dish->name) }}">
@@ -43,18 +33,17 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                        <br>
 
                         <label class="form-label" for="description">Description</label>
                         <input required class="mb-1 form-control @error('description') is-invalid @enderror" type="text"
                             title="description" name="description" id="description"
                             value="{{ old('description', $dish->description) }}">
-                        <br>
                         @error('description')
                             <div class="alert alert-danger" role="alert">
                                 {{ $message }}
                             </div>
                         @enderror
+
 
                         <label class="form-label" for="price">Price</label>
                         <input required class="mb-1 form-control @error('price') is-invalid @enderror" type="text"
@@ -64,7 +53,6 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                        <br>
 
                         {{-- Dish visibility --}}
                         <div class="form-check">
@@ -87,11 +75,13 @@
                             </div>
                         @enderror
                         {{-- /Dish visibility --}}
+
                         <br>
 
                         <div class="mb-3">
                             <small id="priceHelper" class="text-muted">* Campo obbligatorio</small>
                         </div>
+
 
                         <button class="btn btn-primary my-2" type="submit">Send</button>
                     </div>
