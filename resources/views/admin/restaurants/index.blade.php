@@ -17,7 +17,7 @@
                     @csrf
                     @method('put')
 
-                    <h3>Edit your restaurant data</h3>
+                    <h3>Edit your restaurant's data</h3>
                     @if (session('message'))
                         <div class="alert alert-success">
                             {{ session('message') }}
@@ -78,7 +78,7 @@
                     @enderror
 
                     <div class="mb-3">
-                        <label for="piva" class="form-label">Partita Iva</label>
+                        <label for="piva" class="form-label">VAT number</label>
                         <input type="text" name="piva" id="piva"
                             class="form-control @error('piva') is-invalid @enderror" placeholder="learn laravel 9"
                             aria-describedby="pivaHelper" value="{{ old('piva', $restaurants->piva) }}">

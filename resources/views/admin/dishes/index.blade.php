@@ -8,7 +8,7 @@
             <div class="col table-responsive d-flex flex-column align-items-center mx-5">
 
                 <a class="btn btn_orange m-4" href=" {{ route('admin.dishes.create') }}">
-                    <h6 class="mx-4">Aggiungi Nuovi Piatti</h6>
+                    <h6 class="mx-4">Add a new Dish</h6>
                 </a>
 
                 @if (session('message'))

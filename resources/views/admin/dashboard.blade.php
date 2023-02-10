@@ -96,7 +96,7 @@
                 @include('admin.partials.navbar')
 
                 <div class="col">
-                    <h1 class="text-center">You are logged</h1>
+                    <h1 class="text-center">You are logged in</h1>
                     <h3 class="text-center m-3">Select the table from the left menu</h3>
                 </div>
             </div>

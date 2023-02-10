@@ -83,7 +83,7 @@
 
                             <div class="mb-4 row">
                                 <label for="name_restaurant"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Name of the Restaurant ') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Restaurant name*') }}</label>
                                 <div class="col-md-6">
                                     <input id="name_restaurant" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name_restaurant"
@@ -100,7 +100,7 @@
                             {{-- telefono ristorante --}}
                             <div class="mb-4 row">
                                 <label for="phone"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Restaurant phone number') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Restaurant phone number*') }}</label>
                                 <div class="col-md-6">
                                     <input id="phone" type="text" class="form-control" name="phone" required
                                         autocomplete="phone">
@@ -110,7 +110,7 @@
                             {{-- PIVA --}}
                             <div class="mb-4 row">
                                 <label for="piva"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Restaurant vat number') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Restaurant vat number*') }}</label>
                                 <div class="col-md-6">
                                     <input id="piva" type="text" class="form-control" name="piva" required
                                         autocomplete="piva">
@@ -125,7 +125,7 @@
                             {{-- Indirizzo --}}
                             <div class="mb-4 row">
                                 <label for="address"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Restaurant address') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Restaurant address*') }}</label>
                                 <div class="col-md-6">
                                     <input id="address" type="text" class="form-control" name="address" required
                                         autocomplete="address">

@@ -46,7 +46,7 @@
                                 </td>
                             </tr>
                         @empty
-                            <h3>Not categories found</h3>
+                            <h3>No categories found</h3>
                         @endforelse
                     </tbody>
                 </table>

@@ -35,7 +35,7 @@
                             </div>
                         @enderror
                         <br>
-                        <label class="form-label"for="name">Name</label>
+                        <label class="form-label"for="name">Name*</label>
                         <input class="mb-1 form-control @error('name') is-invalid @enderror" type="text" title="name"
                             name="name" id="name" value="{{ old('name', $dish->name) }}">
                         @error('name')
@@ -45,7 +45,7 @@
                         @enderror
                         <br>
 
-                        <label class="form-label" for="description">Description</label>
+                        <label class="form-label" for="description">Description*</label>
                         <input class="mb-1 form-control @error('description') is-invalid @enderror" type="text"
                             title="description" name="description" id="description"
                             value="{{ old('description', $dish->description) }}">
@@ -56,7 +56,7 @@
                             </div>
                         @enderror
 
-                        <label class="form-label" for="price">Price</label>
+                        <label class="form-label" for="price">Price*</label>
                         <input class="mb-1 form-control @error('price') is-invalid @enderror" type="text" title="price"
                             name="price" id="price" value="{{ old('price', $dish->price) }}">
                         @error('price')
@@ -78,7 +78,7 @@
                                     name="visible">
                             @endif
                             <label class="form-check-label" for="visible">
-                                Piatto disponibile
+                                Dish Available
                             </label>
                         </div>
                         @error('visible')
