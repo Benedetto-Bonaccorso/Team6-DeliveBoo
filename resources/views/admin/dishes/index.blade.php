@@ -47,9 +47,9 @@
                                 <td><img width="150" src="{{ asset('storage/' . $dish->cover_image) }}" alt="">
                                 </td>
                                 <td class="align-middle text-center">
-                                    <a class="btn btn-primary" href="{{ route('admin.dishes.show', $dish->id) }}"
+                                    <a class="btn btn-primary" href="{{ route('admin.dishes.show', $dish->slug) }}"
                                         role="button"><i class="fas fa-eye fa-sm fa-fw"></i></a>
-                                    <a class="btn btn-primary" href="{{ route('admin.dishes.edit', $dish->id) }}"
+                                    <a class="btn btn-primary" href="{{ route('admin.dishes.edit', $dish->slug) }}"
                                         role="button"><i class="fas fa-pencil fa-sm fa-fw"></i></a>
 
                                     {{-- Modal trigger button for delete --}}

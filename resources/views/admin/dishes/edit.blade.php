@@ -26,8 +26,8 @@
                         @enderror
 
                         <label class="form-label"for="name">Name</label>
-                        <input class="mb-1 form-control @error('name') is-invalid @enderror" type="text" title="name"
-                            name="name" id="name" value="{{ old('name', $dish->name) }}">
+                        <input required class="mb-1 form-control @error('name') is-invalid @enderror" type="text"
+                            title="name" name="name" id="name" value="{{ old('name', $dish->name) }}">
                         @error('name')
                             <div class="alert alert-danger" role="alert">
                                 {{ $message }}
@@ -35,7 +35,7 @@
                         @enderror
 
                         <label class="form-label" for="description">Description</label>
-                        <input class="mb-1 form-control @error('description') is-invalid @enderror" type="text"
+                        <input required class="mb-1 form-control @error('description') is-invalid @enderror" type="text"
                             title="description" name="description" id="description"
                             value="{{ old('description', $dish->description) }}">
                         @error('description')
@@ -46,8 +46,8 @@
 
 
                         <label class="form-label" for="price">Price</label>
-                        <input class="mb-1 form-control @error('price') is-invalid @enderror" type="text" title="price"
-                            name="price" id="price" value="{{ old('price', $dish->price) }}">
+                        <input required class="mb-1 form-control @error('price') is-invalid @enderror" type="text"
+                            title="price" name="price" id="price" value="{{ old('price', $dish->price) }}">
                         @error('price')
                             <div class="alert alert-danger" role="alert">
                                 {{ $message }}
@@ -75,6 +75,13 @@
                             </div>
                         @enderror
                         {{-- /Dish visibility --}}
+
+                        <br>
+
+                        <div class="mb-3">
+                            <small id="priceHelper" class="text-muted">* Campo obbligatorio</small>
+                        </div>
+
 
                         <button class="btn btn-primary my-2" type="submit">Send</button>
                     </div>
