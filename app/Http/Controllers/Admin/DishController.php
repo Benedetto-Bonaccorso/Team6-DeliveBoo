@@ -93,7 +93,13 @@ class DishController extends Controller
     public function edit(Dish $dish)
     {
 
-        return view("admin.dishes.edit", compact("dish"));
+        $restaurant_id = Auth::user()->restaurants->id;
+
+        if ($restaurant_id == $dish->restaurant_id) {
+            return view("admin.dishes.edit", compact("dish"));
+        } else {
+            return view("admin.dishes.notfound");
+        }
     }
 
     /**

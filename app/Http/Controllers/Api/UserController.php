@@ -14,9 +14,9 @@ class UserController extends Controller
     public function index()
     {
         return response()->json([
-            'status'=>'success',
-         
-            'data'=>Restaurant::with(['tipologies','dishes'])->orderByDesc('id')->paginate(5)
+            'status' => 'success',
+
+            'data' => Restaurant::with(['tipologies', 'dishes'])->orderByDesc('id')->paginate()
         ]);
     }
 
@@ -24,18 +24,18 @@ class UserController extends Controller
     public function tipologies()
     {
         return response()->json([
-            'status'=>'success',
-         
-            'data'=>Tipology::all()
+            'status' => 'success',
+
+            'data' => Tipology::all()
         ]);
     }
 
     public function categories()
     {
         return response()->json([
-            'status'=>'success',
-         
-            'data'=>Category::all()
+            'status' => 'success',
+
+            'data' => Category::all()
         ]);
     }
 }
