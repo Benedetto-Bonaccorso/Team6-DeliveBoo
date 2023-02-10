@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Dflydev\DotAccessData\Data;
 use App\Models\Restaurant;
 use App\Models\Tipology;
+use App\Models\Category;
 
 class UserController extends Controller
 {
@@ -26,6 +27,15 @@ class UserController extends Controller
             'status'=>'success',
          
             'data'=>Tipology::all()
+        ]);
+    }
+
+    public function categories()
+    {
+        return response()->json([
+            'status'=>'success',
+         
+            'data'=>Category::all()
         ]);
     }
 }
