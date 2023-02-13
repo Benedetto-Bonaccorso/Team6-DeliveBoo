@@ -16,7 +16,7 @@ class UserController extends Controller
         return response()->json([
             'status' => 'success',
 
-            'data' => Restaurant::with(['tipologies', 'dishes'])->orderByDesc('id')->paginate()
+            'data' => Restaurant::with(['tipologies', 'dishes'])->orderByDesc('id')->paginate(6)
         ]);
     }
 
