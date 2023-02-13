@@ -20,6 +20,23 @@ class UserController extends Controller
         ]);
     }
 
+    public function show($slug)
+    {
+        $restaurant =Restaurant::with(['tipologies', 'dishes'])->where('slug',$slug)->first();
+
+        if ($restaurant){
+            return response()->json([
+                'status'=>'success',
+             
+                'data'=>$restaurant
+            ]);
+        }
+        return response()->json([
+            'status'=>'success',
+         
+            'data'=>null
+        ]);
+    }
 
     public function tipologies()
     {
