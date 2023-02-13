@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateRestaurantRequest extends FormRequest
 {
@@ -27,7 +28,7 @@ class UpdateRestaurantRequest extends FormRequest
             'user_id' => 'exists:user,id',
             'name' => 'required|max:100',
             'phone_number' => 'nullable|max:15',
-            'piva' => 'required|min:11|max:11|unique:restaurants',
+            'piva' => ['required', 'min:11', 'max:11', Rule::unique('restaurants')->ignore($this->restaurant->id)],
             'address' => 'nullable|max:150',
             'cover_image' => 'nullable|image|max:250'
         ];
