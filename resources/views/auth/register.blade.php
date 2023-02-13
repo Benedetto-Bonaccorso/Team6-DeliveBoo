@@ -112,8 +112,9 @@
                                 <label for="piva"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Vat number*') }}</label>
                                 <div class="col-md-6">
-                                    <input required id="piva" type="text" class="form-control" name="piva"
-                                        required autocomplete="piva">
+                                    <input required id="piva" type="text"
+                                        class="form-control @error('piva') is-invalid @enderror" name="piva" required
+                                        autocomplete="piva">
                                     @error('piva')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

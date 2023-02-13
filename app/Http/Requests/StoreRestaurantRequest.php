@@ -27,7 +27,7 @@ class StoreRestaurantRequest extends FormRequest
             'user_id' => 'exists:user,id',
             'name' => 'required|max:100',
             'phone_number' => 'nullable|max:15',
-            'piva' => 'required|max:11',
+            'piva' => 'required|min:11|max:11|unique:restaurants',
             'address' => 'nullable|max:150',
             'cover_image' => 'nullable|image|max:250',
         ];
