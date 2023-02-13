@@ -8,7 +8,7 @@
 
             <div class="col mt-5">
 
-                <form action="{{ route('admin.dishes.update', $dish->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.dishes.update', $dish->slug) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('put')
 
