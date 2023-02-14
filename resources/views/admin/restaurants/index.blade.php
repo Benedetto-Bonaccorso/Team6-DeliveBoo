@@ -56,7 +56,7 @@
 
                     <div class="mb-3">
                         <label for="phone_number" class="form-label">Phone</label>
-                        <input type="text" name="phone_number" id="phone_number"
+                        <input type="number" name="phone_number" id="phone_number"
                             class="form-control @error('phone_number') is-invalid @enderror"
                             aria-describedby="phone_numberHelper"
                             value="{{ old('phone_number', $restaurants->phone_number) }}">
@@ -69,7 +69,7 @@
 
                     <div class="mb-3">
                         <label for="piva" class="form-label">Vat number</label>
-                        <input required type="text" name="piva" id="piva"
+                        <input required type="number" name="piva" id="piva"
                             class="form-control @error('piva') is-invalid @enderror" aria-describedby="pivaHelper"
                             value="{{ old('piva', $restaurants->piva) }}">
                     </div>
