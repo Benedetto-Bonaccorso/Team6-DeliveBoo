@@ -27,7 +27,7 @@
                     @method('PUT')
 
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
+                        <label for="name" class="form-label">Name*</label>
                         <input required type="text" name="name" id="name"
                             class="form-control @error('name') is-invalid @enderror" aria-describedby="nameHelper"
                             value="{{ old('name', $restaurants->name) }}">
@@ -68,7 +68,7 @@
                     @enderror
 
                     <div class="mb-3">
-                        <label for="piva" class="form-label">Vat number</label>
+                        <label for="piva" class="form-label">Vat number*</label>
                         <input required type="number" name="piva" id="piva"
                             class="form-control @error('piva') is-invalid @enderror" aria-describedby="pivaHelper"
                             value="{{ old('piva', $restaurants->piva) }}">
