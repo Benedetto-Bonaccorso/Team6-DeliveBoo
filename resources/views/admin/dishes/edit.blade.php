@@ -52,8 +52,9 @@
 
                         <div class="mb-3">
                             <label class="form-label" for="price">Price</label>
-                            <input required class="mb-1 form-control @error('price') is-invalid @enderror" type="text"
-                                title="price" name="price" id="price" value="{{ old('price', $dish->price) }}">
+                            <input min="1" required class="mb-1 form-control @error('price') is-invalid @enderror"
+                                type="text" title="price" name="price" id="price"
+                                value="{{ old('price', $dish->price) }}">
                             @error('price')
                                 <div class="alert alert-danger" role="alert">
                                     {{ $message }}

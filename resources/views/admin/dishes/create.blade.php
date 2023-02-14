@@ -55,9 +55,9 @@
                         {{-- Dish price --}}
                         <div class="mb-3">
                             <label for="price" class="form-label">Price*</label>
-                            <input required type="number" class="form-control @error('price') is-invalid @enderror"
-                                name="price" id="price" aria-describedby="priceHelper" placeholder="" step="0.01"
-                                value="{{ old('price') }}">
+                            <input min="1" required type="number"
+                                class="form-control @error('price') is-invalid @enderror" name="price" id="price"
+                                aria-describedby="priceHelper" placeholder="" step="0.01" value="{{ old('price') }}">
                         </div>
                         @error('price')
                             <div class="alert alert-danger" role="alert">
