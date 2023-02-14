@@ -103,7 +103,7 @@
                                 <label for="phone"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Phone number') }}</label>
                                 <div class="col-md-6">
-                                    <input id="phone" type="text" class="form-control" name="phone" required
+                                    <input id="phone" type="number" class="form-control" name="phone" required
                                         autocomplete="phone">
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                                 <label for="piva"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Vat number*') }}</label>
                                 <div class="col-md-6">
-                                    <input required id="piva" type="text"
+                                    <input required id="piva" type="number"
                                         class="form-control @error('piva') is-invalid @enderror" name="piva" required
                                         autocomplete="piva">
                                     @error('piva')
