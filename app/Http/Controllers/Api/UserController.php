@@ -16,25 +16,25 @@ class UserController extends Controller
         return response()->json([
             'status' => 'success',
 
-            'data' => Restaurant::with(['tipologies', 'dishes'])->orderByDesc('id')->paginate(6)
+            'data' => Restaurant::with(['tipologies', 'dishes'])->orderByDesc('id')->paginate()
         ]);
     }
 
     public function show($slug)
     {
-        $restaurant =Restaurant::with(['tipologies', 'dishes'])->where('slug',$slug)->first();
+        $restaurant = Restaurant::with(['tipologies', 'dishes'])->where('slug', $slug)->first();
 
-        if ($restaurant){
+        if ($restaurant) {
             return response()->json([
-                'status'=>'success',
-             
-                'data'=>$restaurant
+                'status' => 'success',
+
+                'data' => $restaurant
             ]);
         }
         return response()->json([
-            'status'=>'success',
-         
-            'data'=>null
+            'status' => 'success',
+
+            'data' => null
         ]);
     }
 
