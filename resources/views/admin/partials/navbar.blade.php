@@ -10,6 +10,14 @@
             </li>
             <hr>
             <li class="nav-item">
+                <a class="nav-link {{ Route::currentRouteName() === 'admin.orders.index' ? 'active' : '' }}"
+                    aria-current="page" href="{{ route('admin.orders.index') }}">
+                    <span data-feather="home" class="align-text-bottom"></span>
+                    Orders Received
+                </a>
+            </li>
+            <hr>
+            <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() === 'admin.dishes.index' ? 'active' : '' }}"
                     href="{{ route('admin.dishes.index') }}">
                     <span data-feather="file" class="align-text-bottom"></span>

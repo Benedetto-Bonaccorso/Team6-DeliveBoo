@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DishController;
 use App\Http\Controllers\Admin\RestaurantController;
+use App\Http\Controllers\Admin\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,7 @@ Route::middleware('auth', 'verified')
             'dishes' => 'dish:slug'
         ]);
         Route::resource("restaurants", RestaurantController::class);
+        Route::resource("orders", OrderController::class);
     });
 
 //Route::resource("dishes", DishController::class)
