@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateOrderRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -49,29 +50,49 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request)
     {
         $data = $request->all();
+        // dd($data)
 
-        $val_data = Validator::make($data, [
-            'name' => 'required|',
-            'address' => 'required|',
-            'phone' => 'required|',
-            'totalCart' => 'required|'
-        ]);
+        // $val_data = Validator::make($data, [
+        //     // 'name' => 'required|',
+        //     // 'address' => 'required|',
+        //     // 'phone' => 'required|',
+        //     // 'total_payment' => 'required|'
+        // ]);
 
-        if ($val_data->fails()) {
-            return response()->json([
-                'success' => false,
-                'errors' => $val_data->errors()
+        // if ($val_data->fails()) {
+        //     return response()->json([
+        //         'success' => false,
+        //         'errors' => $val_data->errors()
+        //     ]);
+        // }
+
+        $new_order = Order::create($data);
+        // $piatti = [];
+        // $new_order->dishes()->sync($request->cart);
+        foreach ($request->cart as $dish) {
+            DB::table('dish_order')->insert([
+                'dish_id' =>  $dish['id'],
+                'order_id' => $new_order->id,
+                'quantity' => $dish['qty']
             ]);
+            // $piatti->array_push(get_object_vars($dish));
+
+            // array_push($piatti, $dish);
         }
 
-        // $new_lead = new Lead();
-        // $new_lead->fill($data);
-        // $new_lead->save();
+        // $restaurant->tipologies()->sync([]);
 
-        // Mail::to('ciao@example.it')->send(new NewContact($new_lead));
+
+        // if ($request->has('tipologies')) {
+        //     $restaurant->tipologies()->sync($request->tipologies);
+        // } else {
+        //     $restaurant->tipologies()->sync([]);
+        // }
 
         return response()->json([
-            'success' => true
+            'success' => true,
+            'data' => $request->all()
+            // 'data' => $piatti
         ]);
     }
 

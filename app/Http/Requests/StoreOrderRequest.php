@@ -24,10 +24,10 @@ class StoreOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:50',
-            'address' => 'nullable',
-            'phone' => 'nullable|max:14',
-            'total_payment' => 'required|between:0,999.99'
+            // 'name' => 'required|max:50',
+            // 'address' => 'nullable',
+            // 'phone' => 'nullable|max:14',
+            // 'total_payment' => 'required|between:0,999.99'
         ];
     }
 }
