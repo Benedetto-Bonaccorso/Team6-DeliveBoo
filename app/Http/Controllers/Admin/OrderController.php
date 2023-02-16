@@ -7,6 +7,7 @@ use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class OrderController extends Controller
 {
@@ -27,7 +28,6 @@ class OrderController extends Controller
         //dd($order);
 
         return view('admin.orders.index', compact("order", "dishes"));
-
     }
 
     /**
@@ -48,7 +48,31 @@ class OrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
-        //
+        $data = $request->all();
+
+        $val_data = Validator::make($data, [
+            'name' => 'required|',
+            'address' => 'required|',
+            'phone' => 'required|',
+            'totalCart' => 'required|'
+        ]);
+
+        if ($val_data->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $val_data->errors()
+            ]);
+        }
+
+        // $new_lead = new Lead();
+        // $new_lead->fill($data);
+        // $new_lead->save();
+
+        // Mail::to('ciao@example.it')->send(new NewContact($new_lead));
+
+        return response()->json([
+            'success' => true
+        ]);
     }
 
     /**
