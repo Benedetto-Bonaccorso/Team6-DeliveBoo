@@ -51,6 +51,38 @@ class OrderController extends Controller
 
         // dd($dishes);
         // $orderArray = $dishes->first()->orders()->first()->get();
+
+        foreach ($orderArray as  $single_order) {
+
+    
+            $disharray=[];
+
+            $pivotRecords = DB::table('dish_order')->where([
+
+                'order_id' =>  $single_order->id,
+
+            ])->get();
+        
+            foreach ($pivotRecords as  $record) {
+
+                $dish = DB::table('dishes')->where([
+
+                    'id' =>  $record->dish_id,
+    
+                ])->get();
+
+                $dish['qty'] = $record->quantity;
+
+                array_push($disharray,$dish);
+
+
+            }
+
+            $single_order->dishes = $disharray;
+        
+        }
+        
+        dd($orderArray);
         $order = collect($orderArray)->sortBy("id");
         // dd($order);
 
