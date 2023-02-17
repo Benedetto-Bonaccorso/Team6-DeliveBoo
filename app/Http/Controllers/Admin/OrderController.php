@@ -27,26 +27,29 @@ class OrderController extends Controller
 
         foreach ($dishes as $key => $dish) {
 
-            $pivotRecord = DB::table('dish_order')->where([
+            $pivotRecords = DB::table('dish_order')->where([
 
                 'dish_id' =>  $dish['id'],
 
-            ])->first();
+            ])->get();
 
-            $order_id = $pivotRecord->order_id;
+            foreach ($pivotRecords as $key => $record) {
 
-            $orderRecord = DB::table('orders')->where([
+                $order_id = $record->order_id;
 
-                'id' =>  $order_id
+                $orderRecord = DB::table('orders')->where([
 
-            ])->first();
-            if (!in_array($orderRecord, $orderArray)) {
+                    'id' =>  $order_id
 
-                array_push($orderArray, $orderRecord);
+                ])->first();
+                if (!in_array($orderRecord, $orderArray)) {
+
+                    array_push($orderArray, $orderRecord);
+                }
             }
         }
 
-
+        // dd($dishes);
         // $orderArray = $dishes->first()->orders()->first()->get();
         $order = collect($orderArray)->sortBy("id");
         // dd($order);
@@ -77,19 +80,6 @@ class OrderController extends Controller
         $data = $request->all();
         // dd($data)
 
-        // $val_data = Validator::make($data, [
-        //     // 'name' => 'required|',
-        //     // 'address' => 'required|',
-        //     // 'phone' => 'required|',
-        //     // 'total_payment' => 'required|'
-        // ]);
-
-        // if ($val_data->fails()) {
-        //     return response()->json([
-        //         'success' => false,
-        //         'errors' => $val_data->errors()
-        //     ]);
-        // }
 
         $new_order = Order::create($data);
         // $piatti = [];
@@ -104,15 +94,6 @@ class OrderController extends Controller
 
             // array_push($piatti, $dish);
         }
-
-        // $restaurant->tipologies()->sync([]);
-
-
-        // if ($request->has('tipologies')) {
-        //     $restaurant->tipologies()->sync($request->tipologies);
-        // } else {
-        //     $restaurant->tipologies()->sync([]);
-        // }
 
         return response()->json([
             'success' => true,
