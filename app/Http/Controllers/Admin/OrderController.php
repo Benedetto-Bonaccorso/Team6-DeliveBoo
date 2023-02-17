@@ -22,9 +22,34 @@ class OrderController extends Controller
 
         $dishes = Auth::user()->restaurants->dishes;
 
-        $orderArray = $dishes->first()->orders()->first()->get();
+        $orderArray = [];
+        //ciclo piatti
 
+        foreach ($dishes as $key => $dish) {
+
+            $pivotRecord = DB::table('dish_order')->where([
+
+                'dish_id' =>  $dish['id'],
+
+            ])->first();
+
+            $order_id = $pivotRecord->order_id;
+
+            $orderRecord = DB::table('orders')->where([
+
+                'id' =>  $order_id
+
+            ])->first();
+            if (!in_array($orderRecord, $orderArray)) {
+
+                array_push($orderArray, $orderRecord);
+            }
+        }
+
+
+        // $orderArray = $dishes->first()->orders()->first()->get();
         $order = collect($orderArray)->sortBy("id");
+        // dd($order);
 
         //dd($order);
 
