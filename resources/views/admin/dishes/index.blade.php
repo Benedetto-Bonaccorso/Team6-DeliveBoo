@@ -6,7 +6,7 @@
             @include('admin.partials.navbar')
 
 
-            <div class="col table-responsive d-flex flex-column align-items-center mx-5">
+            <div class="col  d-flex flex-column align-items-center mx-5">
                 <a class="btn btn-primary m-4" href=" {{ route('admin.dishes.create') }}">Add a new dish</a>
 
 
@@ -16,7 +16,7 @@
                     </div>
                 @endif
 
-                <table class="table table-orange">
+                <table class="table table-responsive table-orange">
                     <thead>
                         <tr>
                             <th scope="col">Name</th>

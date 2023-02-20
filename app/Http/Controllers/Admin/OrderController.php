@@ -82,13 +82,13 @@ class OrderController extends Controller
         
         }
         
-        dd($orderArray);
+        // dd($orderArray);
         $order = collect($orderArray)->sortBy("id");
         // dd($order);
 
-        //dd($order);
+        // dd($order[0]->dishes[0]);
 
-        return view('admin.orders.index', compact("order", "dishes"));
+        return view('admin.orders.index', compact("order"));
     }
 
     /**

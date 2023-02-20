@@ -11,6 +11,43 @@ $main-color-2-dark: #7c0909;
 $main-color-brown: #a16e2b;
 
 
+.orders {
+    .table-responsive {
+        border-radius: 30px;
+    }
+
+    table t {
+        background-clip: content-box;
+        border-color: #000000;
+
+        .first {
+            width: 200px;
+        }
+    }
+
+    table tbody tr,
+    #business-table table thead tr th span,
+    #business-table table thead tr th img {
+        cursor: pointer;
+    }
+
+    table td:first-child {
+        width: 40px;
+    }
+
+    table thead {
+        // background: linear-gradient(86.71deg, #B1CF4A 1.62%, #249F5B 158.89%);
+        background-color: $main-color-1 ;
+        box-shadow: 0px 4px 15px rgba(19, 19, 19, 0.25);
+        z-index: 10;
+    }
+
+    table tbody {
+        z-index: 9;
+    }
+}
+
+
 .h-8 {
     height: 8rem;
 }
@@ -47,6 +84,15 @@ $main-color-brown: #a16e2b;
 }
 
 .table-responsive {
+    margin: 10px;
+
+
+    thead {
+        color: $main-color-2-dark;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
     tbody {
         border-radius: 10px;
     }
@@ -54,8 +100,10 @@ $main-color-brown: #a16e2b;
     td {
         padding: 0.25rem 0.5rem;
         font-size: large;
-        border: 1px solid black;
-        background-color: $main-color-1;
+        color: $main-color-2-dark;
+        font-weight: bold;
+
+        background-color: transparent;
     }
 }
 
@@ -184,6 +232,12 @@ header {
 
 .btn_orange {
     background-color: $main-color-1-dark;
+}
+
+.table-orange {
+    thead {
+        background-color: $main-color-1;
+    }
 }
 
 /* multiselect style */
