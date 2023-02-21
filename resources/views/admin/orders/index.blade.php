@@ -22,8 +22,9 @@
                     </thead>
                     <tbody id="accordionExample" class="accordion table-group-divider">
                         @foreach ($order as $displayedOrder)
-                            <tr class="accordion-header" id="headingOne" class="accordion-button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <tr class="accordion-header" id="heading{{ $displayedOrder->id }}" class="accordion-button"
+                                data-bs-toggle="collapse" data-bs-target="#collapse{{ $displayedOrder->id }}"
+                                aria-expanded="true" aria-controls="collapse{{ $displayedOrder->id }}">
                                 <td class="border-0 ps-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="9"
                                         fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
@@ -45,8 +46,10 @@
                             <tr>
                                 <th class="border-0 ps-2">
                                 </th>
-                                <td colspan="5" id="collapseOne" class="p-0 accordion-collapse collapse sow"
-                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <td colspan="5" id="collapse{{ $displayedOrder->id }}"
+                                    class="p-0 accordion-collapse collapse sow"
+                                    aria-labelledby="heading{{ $displayedOrder->id }}"
+                                    data-bs-parent="#accordi{{ $displayedOrder->id }}xample">
 
 
                                     <table class="table table-responsive table-orange accordion-body">
